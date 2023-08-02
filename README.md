@@ -1,24 +1,48 @@
-# README
+# DSS管理システム
+<!--ここにアプリ名を入力-->
+DrivingSchoolStudent管理システム
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+自動車学校に通う生徒の情報について、指導員同士での情報共有を図るシステム。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+また、管理者側からは生徒数の把握や、日付毎の新規生徒登録数を
+カレンダーで見ることができる。
 
-Things you may want to cover:
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+現在、私の所属する学校内の生徒管理システムは、学校と生徒の連携が主なシステムとなっています。
+例えば自分の端末で授業の予約を取ったり、オンラインで授業を見たりなどです。
+しかし、実際に教える指導員側が生徒の情報を把握するためには、
+生徒個人に配布している紙面のノートしかありません。
 
-* Ruby version
+そのため、指導員が個々人の端末を利用し、自分の担当生徒の情報を随時チェックしたり、
+他の指導員による評価を参考にしながら授業を行えるシステムがあればいいなと思い
+今回のテーマとして選ばせていただきました。
+​
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+自分の担当生徒一覧を、紙面で管理している学校職員
+紙面による管理を少しでもシステム化したいと考えている学校
+​
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+指導員側・・・授業開始時に、担当する生徒に関する情報をチェックしたり、
+　　　　　　　終了後には気になったことなどをコメントとして残しておくために利用する。
 
-* System dependencies
+管理者側・・・新規生徒獲得の際、紙面だけでなくデータとして保存する。
+　　　　　　　月末会議や年間の情報整理の時に、全体数や月データの参考資料として利用できる。
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1-97nLuBwVKszEu-jq4DHByMKP-on7qrAyaeRjFuc1Hw/edit?usp=sharing
