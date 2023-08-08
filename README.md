@@ -1,10 +1,11 @@
 # DSS管理システム
 <!--ここにアプリ名を入力-->
-DrivingSchoolStudent管理システム
+
 ​
 ## サイト概要
 ### サイトテーマ
 <!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+#### DrivingSchoolStudent管理システム
 自動車学校に通う生徒の情報について、指導員同士での情報共有を図るシステム。
 また、管理者側からは生徒数の把握や、日付毎の新規生徒登録数をカレンダーで見ることができる。
 
@@ -45,8 +46,10 @@ DrivingSchoolStudent管理システム
 ​
 ### 設計書
 <!--テーマを設定・提出する時点では不要です-->
-### 実装機能リスト
+#### 実装機能リスト
 https://docs.google.com/spreadsheets/d/1-97nLuBwVKszEu-jq4DHByMKP-on7qrAyaeRjFuc1Hw/edit?usp=sharing
+#### ER図
+https://drive.google.com/file/d/1IU2jSQ-DEmYhQMCBVIOx-3nQh3ZjwQVW/view?usp=sharing
 
 ​
 ## 開発環境
