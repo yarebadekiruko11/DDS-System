@@ -46,7 +46,7 @@
 ​
 ### 設計書
 <!--テーマを設定・提出する時点では不要です-->
-#### 実装機能リスト
+#### 実装機能リスト・テープル定義書・詳細設計
 https://docs.google.com/spreadsheets/d/1-97nLuBwVKszEu-jq4DHByMKP-on7qrAyaeRjFuc1Hw/edit?usp=sharing
 #### ER図
 https://drive.google.com/file/d/1IU2jSQ-DEmYhQMCBVIOx-3nQh3ZjwQVW/view?usp=sharing
