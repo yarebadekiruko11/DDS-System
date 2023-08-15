@@ -24,7 +24,7 @@
           <input class="form-control" type="search" placeholder="生徒名検索" aria-label="Search">
           <button class="btn btn-success mx-2 text-nowrap" type="submit">検索</button>
         </form>
-        <button class="btn btn-secondary">ログアウト</button>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-secondary"%>
       </div>
     </header>
 <div class="container">

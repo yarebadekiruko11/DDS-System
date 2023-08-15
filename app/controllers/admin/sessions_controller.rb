@@ -1,6 +1,24 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
+  # devise_parameter_sanitizer
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def after_sign_in_path_for(resource)
+    admin_homes_top_path
+  end
+
+  def after_sign_out_path_for(resource)
+    admin_session_path
+  end
+
+  # protected
+
+  # def configure_permitted_parameters
+    # devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+  # end
+
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
