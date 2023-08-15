@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # 指導員用
   devise_for :instructors, controllers: {
-    sessions: "instructore/sessions"
+    sessions: "instructor/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

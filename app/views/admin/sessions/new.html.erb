@@ -1,6 +1,13 @@
-<h2>Log in</h2>
+<div class="row justify-content-center">
+<h1 class="col-3 mt-4">DSS</h1>
+<h4 class="col-4 mt-5">Driving School System</h4>
+</div>
+<div class="row justify-content-center">
+<h3 class="col-4 my-3">指導員ログインページ</h3>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -24,3 +31,4 @@
 <% end %>
 
 <%= render "admin/shared/links" %>
+</div>
