@@ -1,34 +1,29 @@
 <div class="row justify-content-center">
-<h1 class="col-3 mt-4">DSS</h1>
-<h4 class="col-4 mt-5">Driving School System</h4>
+<h1 class="col-md-auto mt-5">Driving School System</h1>
 </div>
 <div class="row justify-content-center">
-<h3 class="col-4 my-3">指導員ログインページ</h3>
+<h5 class="col-md-auto my-4">管理者用ログインページ</h5>
 </div>
 
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
 
-<%= form_with model: @admin, url: admin_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
+<div class="row justify-content-center my-4">
+   <div class="col-lg-2">アドレス</div>
+   <div class="col-md-auto">
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
+<div class="row justify-content-center my-4">
+   <div class="col-lg-2">パスワード</div>
+   <div class="col-md-auto">
     <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+   </div>
+</div>
+<div class="row justify-content-center my-4">
+  <div class="col-md-auto">
+    <%= f.submit "Log in", class: 'btn btn-primary px-5' %>
   </div>
 <% end %>
 
-<%= render "admin/shared/links" %>
 </div>

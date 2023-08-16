@@ -9,3 +9,9 @@ Admin.create!(
   email: "aa@aa",
   password: "ssssss"
 )
+
+Instructor.create!(
+  email: "ii@ii",
+  name: "五十嵐歩",
+  password: "rrrrrr"
+)
