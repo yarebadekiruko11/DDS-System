@@ -1,47 +1,42 @@
 Rails.application.routes.draw do
 
-  namespace :instructor do
-    get 'comments/new'
-    get 'comments/create'
-    get 'comments/destroy'
-    get 'comments/index'
-  end
-  namespace :instructor do
-    get 'students/index'
-    get 'students/show'
-    get 'students/search'
-  end
-  namespace :admin do
-    get 'students/index'
-    get 'students/new'
-    get 'students/create'
-    get 'students/show'
-    get 'students/edit'
-    get 'students/update'
-  end
-  namespace :admin do
-    get 'instructors/index'
-    get 'instructors/new'
-    get 'instructors/create'
-    get 'instructors/show'
-    get 'instructors/edit'
-    get 'instructors/update'
-  end
-  # 管理者用
+  # 管理者用devise
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
-  get 'admin/homes/top'
-
-
-  # 指導員用
+  # 指導員用devise
   devise_for :instructors, controllers: {
     sessions: "instructor/sessions"
   }
 
+# 指導員側のroutes
+  scope module: :instructor do
+
+    # 生徒関係
+    resources :students, only: [:index, :show]
+    get 'students/search'
+
+    # コメント関係
+    resources :comments, only: [:new, :create, :destroy, :index]
+
+  end
+
+# 管理者側のroutes
+  namespace :admin do
+
+    # ホーム画面
+    get 'homes/top'
+
+    # 生徒関係
+    resources :students
+
+    # 指導員登録
+    resources :instructors
+
+  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
- end
+end

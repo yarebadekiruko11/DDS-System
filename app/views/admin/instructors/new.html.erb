@@ -1,2 +1,72 @@
-<h1>Admin::Instructors#new</h1>
-<p>Find me in app/views/admin/instructors/new.html.erb</p>
+
+<div>
+   <%= flash[:notice] %>
+ </div>
+
+ <%# if @instructors.errors.any? %>
+  <%#= @instructors.errors.count %>
+  <!--件のエラーが発生しました-->
+  <!--<ul>-->
+    <%# @instructors.errors.full_messages.each do |message| %>
+      <!--<li>-->
+        <%#= message %>
+        <!--</li>-->
+    <%# end %>
+  <!--</ul>-->
+<%# end %>
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>新規指導員登録</h5>
+    </div>
+  </div>
+
+<%= form_with model: @instructore, url: '/admin/instructors' do |f| %>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>新規指導員名</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>パスワード
+      <% if @minimum_password_length %>
+      (<%= @minimum_password_length %> characters minimum)
+      <% end %>
+    </p>
+   </div>
+   <div class="col-6">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    パスワード確認用
+   </div>
+   <div class="col-6">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+   </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録", class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+<%#= render "instructors/shared/links" %>
+
+
+
+  <!--<div class="row justify-content-start mt-3">-->
+   <!--<div class="col-3 ml-4"></div>-->
+   <!--<div class="d-grid gap-2 col-6">-->
+    <%#= f.submit "新規登録", class: 'btn btn-success px-5' %>
+
+   <!--</div>-->
+  <!--</div>-->

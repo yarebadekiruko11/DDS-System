@@ -3,9 +3,13 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def new
+    @instructor = Instructor.new
   end
 
   def create
+    instructor = Instructor.new(instructor_params)
+    instructor.save
+    redirect_to admin_instructor_path(instructor.id)
   end
 
   def show
@@ -16,4 +20,13 @@ class Admin::InstructorsController < ApplicationController
 
   def update
   end
+
+  private
+
+  def instructor_params
+    params.require(:instroctor).permit(:name, :passward)
+  end
+
+
+
 end

@@ -3,9 +3,13 @@ class Admin::StudentsController < ApplicationController
   end
 
   def new
+    @student = Student.new
   end
 
   def create
+    student = Student.new(student_params)
+    student.save
+    redirect_to admin_students_path(student.id)
   end
 
   def show
@@ -16,4 +20,13 @@ class Admin::StudentsController < ApplicationController
 
   def update
   end
+
+  private
+
+  # ストロングパラメータ
+  def student_params
+    params.require(:student).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :birthday)
+  end
+
+
 end
