@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   devise_for :instructors, controllers: {
     sessions: "instructor/sessions"
   }
+  # root to: "instructors/sign_in"
+
 
 # 指導員側のroutes
   scope module: :instructor do
