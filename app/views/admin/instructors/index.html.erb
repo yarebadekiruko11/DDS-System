@@ -1,2 +1,12 @@
-<h1>Admin::Instructors#index</h1>
+<h1>指導員一覧</h1>
 <p>Find me in app/views/admin/instructors/index.html.erb</p>
+
+<% @instructors.each do |instroctor| %>
+
+<p>名前</p>
+<span><%= instroctor.name %></span>
+<p>在籍状況</p>
+<p>生徒件数</p>
+<%= instroctor.course.count %>
+
+<% end %>

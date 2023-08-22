@@ -1,5 +1,6 @@
 class Admin::InstructorsController < ApplicationController
   def index
+    @instructors = Instructor.all
   end
 
   def new
@@ -24,7 +25,7 @@ class Admin::InstructorsController < ApplicationController
   private
 
   def instructor_params
-    params.require(:instroctor).permit(:name, :passward)
+    params.require(:instructor).permit(:name, :passward)
   end
 
 
