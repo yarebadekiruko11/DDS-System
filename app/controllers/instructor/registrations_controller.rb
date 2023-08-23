@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Instructor::RegistrationsController < Devise::RegistrationsController
+  # before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -11,7 +12,11 @@ class Instructor::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   super
+    # super
+  # end
+
+  # def after_sign_up_path_for(resource)
+    # admin_instructor_path(instructor.id)
   # end
 
   # GET /resource/edit
@@ -42,7 +47,7 @@ class Instructor::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :password, :password_confirmation, :email])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.

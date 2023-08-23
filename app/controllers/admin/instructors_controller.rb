@@ -8,9 +8,10 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def create
-    instructor = Instructor.new(instructor_params)
-    instructor.save
-    redirect_to admin_instructor_path(instructor.id)
+    # 使用しない（instructor側のregistrationのcreateアクションへ）
+    # instructor = Instructor.new(instructor_params)
+    # instructor.save
+    # redirect_to admin_instructor_path(instructor.id)
   end
 
   def show
@@ -25,7 +26,7 @@ class Admin::InstructorsController < ApplicationController
   private
 
   def instructor_params
-    params.require(:instructor).permit(:name, :passward)
+    params.require(:instructor).permit(:name, :password, :password_confirmation, :email)
   end
 
 

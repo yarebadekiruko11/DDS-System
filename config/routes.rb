@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  
-  namespace :admin do
-    get 'courses/new'
-    get 'courses/edit'
-    get 'courses/show'
-  end
+
+
   # 管理者用devise
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -12,9 +8,13 @@ Rails.application.routes.draw do
 
   # 指導員用devise
   devise_for :instructors, controllers: {
+    registrations: 'instructor/registrations',
     sessions: "instructor/sessions"
+
   }
-  # root to: "instructors/sign_in"
+  devise_scope :instructor do
+   root to: "instructor/sessions#new"
+  end
 
 
 # 指導員側のroutes
@@ -36,10 +36,11 @@ Rails.application.routes.draw do
     get 'homes/top'
 
     # 生徒関係
-    resources :students
-    
+    resources :students, only: [:new, :create, :show, :edit]
+
     # コース登録
- 
+    resources :courses, only: [:new, :create, :show, :edit, :index]
+
     # 指導員登録
     resources :instructors
 

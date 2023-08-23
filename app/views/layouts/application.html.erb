@@ -18,7 +18,7 @@
     <header class="navbar navbar-expand bg-dark-subtle py-4">
       <div class="container-fluid justify-content-around">
         <div class="col-auto">
-          <%= current_instructor_name %>
+          <%= current_instructor.name %>
         </div>
       <%= form_with url: students_search_path, method: :get do |f| %>
         <%= f.text_field :name, class: 'd-flex align-items-center' %>
