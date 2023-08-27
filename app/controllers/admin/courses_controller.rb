@@ -1,9 +1,10 @@
 class Admin::CoursesController < ApplicationController
 
   def new
-    @course = Course.new
+
     @student =Student.find(params[:id])
-    
+    @course = Course.new
+    @course.student.id = @student.id
 
 
   end

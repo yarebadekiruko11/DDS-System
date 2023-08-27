@@ -9,7 +9,7 @@ class Admin::StudentsController < ApplicationController
   def create
     student = Student.new(student_params)
     student.save
-    redirect_to admin_course_new_path
+    redirect_to new_admin_course_path
   end
 
   def show
