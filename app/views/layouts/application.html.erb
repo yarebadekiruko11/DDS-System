@@ -20,13 +20,14 @@
         <div class="col-auto">
           <%= current_instructor.name %>
         </div>
-      <%= form_with url: students_search_path, method: :get do |f| %>
-        <%= f.text_field :name, class: 'd-flex align-items-center' %>
-        <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
-          <input class="form-control" type="search" placeholder="生徒名検索" aria-label="Search">
-          <button class="btn btn-success mx-2 text-nowrap" type="submit">検索</button>
+        <%= link_to "担当生徒一覧", students_path, class:"btn btn-info"%>
 
-      <% end %>
+    <%= form_with url: students_search_path, method: :get do |f| %>
+      <form class="d-flex align-items-center" role="search">
+        <%= f.text_field :content, placeholder: "生徒名検索" %>
+        <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
+      </form>
+    <% end %>
         <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, class:"btn btn-secondary"%>
       </div>
     </header>

@@ -10,4 +10,9 @@ class Student < ApplicationRecord
   last_name_kana + first_name_kana
  end
 
+ def self.search_for(content)
+  Student.where('name LIKE ?' , content + '%')
+ end
+
+
 end

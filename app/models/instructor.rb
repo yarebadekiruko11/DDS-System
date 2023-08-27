@@ -7,6 +7,9 @@ class Instructor < ApplicationRecord
     # アソシエーション
   has_many :courses, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
+  # 検索機能
+  
 
 
 end
