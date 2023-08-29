@@ -32,9 +32,10 @@ class DeviseCreateInstructors < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      ## 名前/メールアドレス保存のカラム
+      ## 名前・メールアドレス・ステータス保存のカラム
       t.string :name, null: false
       t.string :email, null:false
+      t.boolean :is_deleted, default: false, null: false
 
 
       t.timestamps null: false

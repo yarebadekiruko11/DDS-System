@@ -5,8 +5,11 @@
 
 <p>名前</p>
 <span><%= instroctor.name %></span>
-<p>在籍状況</p>
+<p>登録アドレス</p>
+<span><%= instroctor.email %></span>
+<p>在職情報</p>
+<span><%= instroctor.is_deleted %></span>
 <p>生徒件数</p>
-<%= instroctor.course.count %>
+<%#= instroctor.course.count %>
 
 <% end %>

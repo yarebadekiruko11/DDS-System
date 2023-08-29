@@ -8,7 +8,6 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def create
-    # 使用しない（instructor側のregistrationのcreateアクションへ）
     instructor = Instructor.new(instructor_params)
     instructor.save
     redirect_to admin_instructor_path(instructor.id)
