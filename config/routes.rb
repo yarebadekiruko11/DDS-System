@@ -36,10 +36,10 @@ Rails.application.routes.draw do
     get 'homes/top'
 
     # 生徒関係
-    resources :students, only: [:new, :create, :show, :edit]
+    resources :students, only: [:new, :create, :edit, :show]
 
     # コース登録
-    resources :courses, only: [:new, :create, :show, :edit, :index]
+    resources :courses, only: [:create, :show, :edit, :index]
 
     # 指導員登録
     resources :instructors

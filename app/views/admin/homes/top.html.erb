@@ -1,35 +1,17 @@
 <div class="row mt-4">
-  <div class="col-4">
-    <!--生徒関連-->
-    <p>生徒名検索</p>
-    <form class="d-flex align-items-center" role="search">
-      <input class="form-control" type="search" placeholder="生徒名検索" aria-label="Search">
-      <button class="btn btn-success mx-2 text-nowrap" type="submit">検索</button>
-    </form>
-    <br>
-     <%= link_to "新規生徒登録", new_admin_student_path, class: 'btn btn-primary' %>
-    <br>
-    <br>
-    <br>
-
-    <!--指導員関連-->
-    <p>指導員検索</p>
-    <form class="d-flex align-items-center" role="search">
-      <input class="form-control" type="search" placeholder="生徒名検索" aria-label="Search">
-      <button class="btn btn-success mx-2 text-nowrap" type="submit">検索</button>
-    </form>
-    <br>
-     <%= link_to "新規指導員登録", new_admin_instructor_path, class: 'btn btn-primary' %>
-    <br>
-    <br>
-     <%= link_to "指導員一覧", admin_instructors_path, class: 'btn btn-info' %>
-
-  </div>
+  <%= render 'admin/search' %>
 
 
   <div class="col">
-<%= month_calendar do |date| %>
+<%= month_calendar events: @courses do |date, courses| %>
   <%= date.day %>
+  <% courses.each do |course| %>
+   <div>
+     <%= course.id %>
+   </div>
+  <% end %>
+
+
 <% end %>
   </div>
 </div>

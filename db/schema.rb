@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2023_08_15_060521) do
     t.integer "instructor_id"
     t.datetime "start_time"
     t.string "car_model"
-    t.integer "status", limit: 2, default: 0, null: false
+    t.integer "status", limit: 3, default: 0, null: false
     t.date "graduation_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,13 +1,48 @@
-<h1>Admin::Students#show</h1>
-<p>Find me in app/views/admin/students/show.html.erb</p>
+<div class="row mt-4">
+  <%= render 'admin/search' %>
 
-  <div class="row">
-    <div class="col-auto mt-5" style="background-color: darkgray;">
-     <h5>生徒詳細</h5>
-    </div>
+  <div class="col">
+<h1>コース新規登録</h1>
+
+<%= form_with model: @course, url: admin_courses_path, method: :post do |f| %>
+
+<%= @student.name %>
+<%= f.hidden_field :student_id, :value => @student.id %>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>受講車種</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :car_model, [['普通車',0],['二輪',1],['その他',2]] %>
+   </div>
   </div>
 
-  <p><%= @student.name %></p>
-  <p><%= @student.kana %></p>
-  <p><%= @student.address %></p>
-  <p><%= @student.phone %></p>
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>担当指導員</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name) %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>入校日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_select :start_time %>
+   </div>
+  </div>
+
+   <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4"></div>
+   <div class="d-grid gap-2 col-6">
+    <%= f.submit "登録", class: 'btn btn-success px-5' %>
+   </div>
+  </div>
+
+ <% end %>
+  </div>
+ </div>

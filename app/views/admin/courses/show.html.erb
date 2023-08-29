@@ -1,2 +1,37 @@
-<h1>Admin::Courses#show</h1>
-<p>Find me in app/views/admin/courses/show.html.erb</p>
+<div class="row mt-4">
+   <%= render 'admin/search' %>
+
+ <div class="col">
+  <h3>コース詳細</h3>
+
+  <table class="table">
+   <tbody>
+    <tr>
+    <th>受講生徒名</th>
+    <td><%= @course.student.name %></td>
+    </tr>
+
+    <tr>
+    <th>担当指導員名</th>
+    <td><%= @course.instructor.name %></td>
+    </tr>
+
+    <tr>
+    <th>入校日<th>
+    <td><%= @course.start_time %></td>
+    </tr>
+
+    <tr>
+    <th>受講車種</th>
+    <td><%= @course.car_model %></td>
+    </tr>
+
+    <tr>
+    <th>受講ステータス<th>
+    <td><%= @course.status_i18n %></td>
+    </tr>
+
+   </tbody>
+  </table>
+ </div>
+</div>

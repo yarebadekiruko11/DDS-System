@@ -1,15 +1,33 @@
-<h1>指導員一覧</h1>
-<p>Find me in app/views/admin/instructors/index.html.erb</p>
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col">
+  <h1>指導員一覧</h1>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">id</th>
+      <th scope="col">指導員名</th>
+      <th scope="col">登録アドレス</th>
+      <th scope="col">在職状況</th>
+      <th scope="col">生徒件数</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @instructors.each do |instroctor| %>
+      <tr>
+       <td><%= instroctor.id %></td>
+       <td><%= instroctor.name %></td>
+       <td><%= instroctor.email %></td>
+       <td>
+        <% if instroctor.is_deleted == false %>有効
+        <% else %>無効
+        <% end %>
+       </td>
+       <td><%#= instroctor.course.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+   </table>
 
-<% @instructors.each do |instroctor| %>
-
-<p>名前</p>
-<span><%= instroctor.name %></span>
-<p>登録アドレス</p>
-<span><%= instroctor.email %></span>
-<p>在職情報</p>
-<span><%= instroctor.is_deleted %></span>
-<p>生徒件数</p>
-<%#= instroctor.course.count %>
-
-<% end %>
+ </div>
+</div>

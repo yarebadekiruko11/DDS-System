@@ -1,7 +1,7 @@
 class Student < ApplicationRecord
 
       # アソシエーション
-  has_many :courses, dependent: :destroy
+ has_many :courses, dependent: :destroy
 
  def name
   last_name + first_name

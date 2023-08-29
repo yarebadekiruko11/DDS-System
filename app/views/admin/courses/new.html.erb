@@ -1,7 +1,10 @@
-<h1>Admin::Courses#new</h1>
-<p>Find me in app/views/admin/courses/new.html.erb</p>
+<h1>コース新規登録</h1>
 
 <%= form_with model: @course, url: admin_course_path do |f| %>
+
+<%= @student.name %>
+<% f.hidden_field :student_id, :value => @student.id %>
+
 
   <div class="row justify-content-start mt-3">
    <div class="col-3 ml-4">
@@ -20,12 +23,6 @@
     <%= f.select :corses.instructor.id, option_form_collection_for_select(Instructor.all, :id, :name) %>
    </div>
   </div>
-
-
-
-
-
-
 
 
   <div class="row justify-content-start mt-3">

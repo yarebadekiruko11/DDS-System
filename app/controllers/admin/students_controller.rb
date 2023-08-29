@@ -9,11 +9,13 @@ class Admin::StudentsController < ApplicationController
   def create
     student = Student.new(student_params)
     student.save
-    redirect_to new_admin_course_path
+    redirect_to admin_student_path(student.id)
   end
 
   def show
-    @student =Student.find(params[:id])
+    @student = Student.find(params[:id])
+    @course = Course.new
+    # @course.student.id = @student.id
   end
 
   def edit
