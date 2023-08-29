@@ -7,31 +7,48 @@
   <table class="table">
    <tbody>
     <tr>
-    <th>受講生徒名</th>
-    <td><%= @course.student.name %></td>
+     <th>受講生徒名</th>
+     <td><%= @course.student.name %></td>
     </tr>
-
     <tr>
-    <th>担当指導員名</th>
-    <td><%= @course.instructor.name %></td>
+     <th>住所</th>
+     <td><%= @course.student.address %></td>
     </tr>
-
     <tr>
-    <th>入校日<th>
-    <td><%= @course.start_time %></td>
+     <th>電話番号</th>
+     <td><%= @course.student.phone %></td>
     </tr>
-
     <tr>
-    <th>受講車種</th>
-    <td><%= @course.car_model %></td>
+     <th>担当指導員名</th>
+     <td><%= @course.instructor.name %></td>
     </tr>
-
     <tr>
-    <th>受講ステータス<th>
-    <td><%= @course.status_i18n %></td>
+     <th>入校日<th>
+     <td><%= l @course.start_time %></td>
+    </tr>
+    <tr>
+     <th>受講車種</th>
+     <td><%= @course.car_model %></td>
+    </tr>
+    <tr>
+     <th>受講ステータス<th>
+     <td><%= @course.status_i18n %></td>
+    </tr>
+    <tr>
+     <th>卒業日</th>
+     <td>
+     <% if @course.status_i18n == "卒業" %>
+     <%= @course.graduation_day %>
+     <% else %>
+     在籍中
+     <% end %>
+     </td>
     </tr>
 
    </tbody>
   </table>
+
+   <%= link_to "編集する", edit_admin_course_path(@course.id), class: "btn btn-success px-5" %>
+
  </div>
 </div>

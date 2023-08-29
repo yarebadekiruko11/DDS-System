@@ -1,2 +1,42 @@
 <h1>Admin::Instructors#edit</h1>
 <p>Find me in app/views/admin/instructors/edit.html.erb</p>
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>指導員編集</h5>
+    </div>
+  </div>
+
+<%= form_with model: @instructor, url: admin_instructor_path do |f| %>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>指導員名</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>メールアドレス</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>在職状況</p>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :is_deleted, :false, checked: true %>
+      <%= f.label :is_deleted, "在職中", {value: :false, style: "display: inline-block;"} %>
+  　　<%= f.radio_button :is_deleted, :true %>
+  　　<%= f.label :is_deleted, "退職", {value: :true, style: "display: inline-block;"} %>
+    </div>
+  </div>
+    <div class="actions">
+    <%= f.submit "編集を保存する", class: 'btn btn-success' %>
+  </div>
+<% end %>

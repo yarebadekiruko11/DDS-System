@@ -1,2 +1,59 @@
-<h1>Admin::Instructors#show</h1>
-<p>Find me in app/views/admin/instructors/show.html.erb</p>
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col">
+  <h3>指導員詳細</h3>
+   <table class="table">
+     <tbody>
+
+      <tr>
+       <th>No</th>
+       <td><%= @instructor.id %></td>
+      </tr>
+      <tr>
+       <th>指導員名</th>
+       <td><%= @instructor.name %></td>
+      </tr>
+      <tr>
+       <th>メール</th>
+       <td><%= @instructor.email %></td>
+      </tr>
+      <tr>
+       <th>在籍状況</th>
+       <td>
+        <% if @instructor.is_deleted == false %>有効
+        <% else %>無効
+        <% end %>
+       </td>
+      </tr>
+      <tr>
+       <th>担当生徒</th>
+       <td><%= @instructor.courses.count %>件</td>
+      </tr>
+    </tbody>
+   </table>
+   <%= link_to "編集する", edit_admin_instructor_path(@instructor.id), class: "btn btn-success px-5" %>
+<br>
+<br>
+   <h5>担当生徒詳細</h5>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">生徒名</th>
+      <th scope="col">受講車種</th>
+      <th scope="col">入校日</th>
+      <th scope="col">在籍状況</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instructor.courses.each do |course| %>
+    <tr>
+      <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
+      <td><%= course.car_model %></td>
+      <td><%= l course.start_time %></td>
+      <td><%= course.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+ </div>
+</div>

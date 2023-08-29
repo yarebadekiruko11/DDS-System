@@ -1,2 +1,57 @@
 <h1>Admin::Courses#edit</h1>
 <p>Find me in app/views/admin/courses/edit.html.erb</p>
+
+<h1>コース編集</h1>
+
+<%= form_with model: @course, url: admin_course_path do |f| %>
+
+<%= @course.student.name %>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>受講車種</p>
+   </div>
+   <div class="col-6">
+    <%#= f.select :car_model, *[普通車,二輪,その他] %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>担当指導員</p>
+   </div>
+   <div class="col-6">
+    <%#= f.select :@course.instructor.id, option_form_collection_for_select(Instructor.all, :id, :name) %>
+   </div>
+  </div>
+
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>入校日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_select :start_time %>
+   </div>
+   </div>
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>卒業日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_select :graduation_day, include_blank: true %>
+   </div>
+   </div>
+
+     <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>ステータス</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :status, Course.statuses.keys.map { |k| [t("enums.course.status.#{k}"), k] } %>
+   </div>
+  </div>
+
+<% end %>
+
+

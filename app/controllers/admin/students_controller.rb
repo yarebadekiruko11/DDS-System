@@ -15,7 +15,6 @@ class Admin::StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @course = Course.new
-    # @course.student.id = @student.id
   end
 
   def edit

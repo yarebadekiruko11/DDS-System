@@ -3,9 +3,13 @@ ja:
     previous: "<<"
     next: ">>"
 
-  enum:
+  enums:
     course:
-     status:
-      enrolled: "在籍"
-      graduation: "卒業"
-      leaving: "退校"
+      status:
+        enrolled: "在籍"
+        graduation: "卒業"
+        leaving: "退校"
+
+  time:
+    formats:
+      default: "%m/%d"
