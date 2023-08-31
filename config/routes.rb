@@ -37,9 +37,12 @@ Rails.application.routes.draw do
 
     # 生徒関係
     resources :students, only: [:new, :create, :edit, :show, :update]
+    get 'students/search'
 
     # コース登録
+    get 'courses/day_index' => 'courses#day_index'
     resources :courses, only: [:create, :show, :edit, :index, :update]
+
 
     # 指導員登録
     resources :instructors

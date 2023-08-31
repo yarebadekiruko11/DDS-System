@@ -5,11 +5,11 @@
   <div class="col">
 <%= month_calendar events: @courses do |date, courses| %>
   <%= date.day %>
-  <% courses.each do |course| %>
-   <div>
-     <%= course.id %>
-   </div>
+  <br>
+  <% if courses.count > 0 %>
+   <%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
   <% end %>
+
 
 
 <% end %>

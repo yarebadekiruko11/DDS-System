@@ -1,0 +1,29 @@
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col">
+  <h1></h1>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">生徒名</th>
+      <th scope="col">受講車種</th>
+      <th scope="col">担当指導員</th>
+      <th scope="col">在職状況</th>
+      <th scope="col">入校日</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+      <tr>
+       <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
+       <td><%= course.car_model %></td>
+       <td><%= course.instructor.name %></td>
+       <td><%= course.status_i18n %></td>
+       <td><%= l course.start_time %></td>
+      </tr>
+      <% end %>
+    </tbody>
+   </table>
+
+ </div>
+</div>
