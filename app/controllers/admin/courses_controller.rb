@@ -6,18 +6,19 @@ class Admin::CoursesController < ApplicationController
 
   def day_index
     # 文字列で送られたパラメータをdatetimeクラスに変換
-    start_time = params[:start_time].to_datetime
+    @start_time = params[:start_time].to_datetime
 
     # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
-    @courses = Course.where(start_time: start_time.all_day)
+    @courses = Course.where(start_time: @start_time.all_day)
     # @courses = Course.where(start_time: params[:id])
   end
 
   def create
+
     @course = Course.new(course_params)
     # @course.student_id = student.id
 
-    if @course.save
+    if @course.save!
       redirect_to admin_course_path(@course.id)
     else
       render :new
@@ -29,8 +30,9 @@ class Admin::CoursesController < ApplicationController
   end
 
   def update
+    # graduation_at = params[:graduation_at].to_datetime
     course = Course.find(params[:id])
-    course.update
+    course.update(course_params)
     redirect_to admin_course_path(course.id)
   end
 
@@ -49,7 +51,7 @@ class Admin::CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:student_id, :start_time, :car_model, :status, :graduation_at, :instructor_id)
+    params.require(:course).permit(:student_id, :start_time, :car_model, :status, :graduation_day, :instructor_id)
   end
 
 

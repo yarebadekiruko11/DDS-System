@@ -1,5 +1,3 @@
-<h1>Admin::Courses#edit</h1>
-<p>Find me in app/views/admin/courses/edit.html.erb</p>
 
 <h1>コース編集</h1>
 
@@ -7,12 +5,14 @@
 
 <%= @course.student.name %>
 
+
   <div class="row justify-content-start mt-3">
    <div class="col-3 ml-4">
     <p>受講車種</p>
    </div>
    <div class="col-6">
-    <%#= f.select :car_model, *[普通車,二輪,その他] %>
+    <%= f.select :car_model, Course.car_models_i18n.invert %>
+    <%#= f.select :car_model, Course.car_models.keys.map { |k| [t("enums.course.car_model.#{k}"), k] } %>
    </div>
   </div>
 
@@ -21,7 +21,8 @@
     <p>担当指導員</p>
    </div>
    <div class="col-6">
-    <%#= f.select :@course.instructor.id, option_form_collection_for_select(Instructor.all, :id, :name) %>
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :name) %>
+
    </div>
   </div>
 
@@ -31,7 +32,7 @@
     <p>入校日</p>
    </div>
    <div class="col-6">
-    <%= f.date_select :start_time %>
+    <%= f.date_field :start_time %>
    </div>
    </div>
   <div class="row justify-content-start mt-3">
@@ -39,7 +40,7 @@
     <p>卒業日</p>
    </div>
    <div class="col-6">
-    <%= f.date_select :graduation_day, include_blank: true %>
+    <%= f.date_field :graduation_day, include_blank: true %>
    </div>
    </div>
 
@@ -48,7 +49,8 @@
     <p>ステータス</p>
    </div>
    <div class="col-6">
-    <%= f.select :status, Course.statuses.keys.map { |k| [t("enums.course.status.#{k}"), k] } %>
+    <%#= f.select :status, options_for_select(Course.statuses.keys.map { |k| [t("enums.course.status.#{k}"), k] }) %>
+    <%= f.select :status, Course.statuses_i18n.invert %>
    </div>
   </div>
 

@@ -10,7 +10,7 @@
 <div class="row justify-content-center my-4">
    <div class="col-lg-2">指導員名</div>
    <div class="col-md-auto">
-    <%= f.select :name, options_from_collection_for_select(Instructor.all, :name, :name) %>
+    <%= f.select :name, options_from_collection_for_select(Instructor.all.where(is_deleted: false), :name, :name) %>
     <%#= f.text_field :name %>
    </div>
 </div>

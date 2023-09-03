@@ -1,19 +1,21 @@
-
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+  <div class="col">
 <div>
    <%= flash[:notice] %>
  </div>
 
- <%# if @instructors.errors.any? %>
-  <%#= @instructors.errors.count %>
-  <!--件のエラーが発生しました-->
-  <!--<ul>-->
-    <%# @instructors.errors.full_messages.each do |message| %>
-      <!--<li>-->
-        <%#= message %>
-        <!--</li>-->
-    <%# end %>
-  <!--</ul>-->
-<%# end %>
+ <% if @instructor.errors.any? %>
+  <%= @instructor.errors.count %>
+  件のエラーが発生しました
+  <ul>
+    <% @instructor.errors.full_messages.each do |message| %>
+      <li>
+        <%= message %>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
 
   <div class="row">
     <div class="col-auto mt-5" style="background-color: darkgray;">
@@ -66,15 +68,5 @@
     <%= f.submit "新規登録", class: 'btn btn-success' %>
   </div>
 <% end %>
-
-<%#= render "instructors/shared/links" %>
-
-
-
-  <!--<div class="row justify-content-start mt-3">-->
-   <!--<div class="col-3 ml-4"></div>-->
-   <!--<div class="d-grid gap-2 col-6">-->
-    <%#= f.submit "新規登録", class: 'btn btn-success px-5' %>
-
-   <!--</div>-->
-  <!--</div>-->
+</div>
+</div>

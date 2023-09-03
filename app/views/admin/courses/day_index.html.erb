@@ -1,7 +1,9 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
  <div class="col">
-  <h1></h1>
+  <h3><%= l @start_time %>の受講開始件数
+  <br>
+   <%= @courses.count %>件</h3>
    <table class="table">
     <thead>
      <tr>
@@ -16,7 +18,7 @@
       <% @courses.each do |course| %>
       <tr>
        <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
-       <td><%= course.car_model %></td>
+       <td><%= course.car_model_i18n %></td>
        <td><%= course.instructor.name %></td>
        <td><%= course.status_i18n %></td>
        <td><%= l course.start_time %></td>

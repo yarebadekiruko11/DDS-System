@@ -9,8 +9,11 @@ class Admin::InstructorsController < ApplicationController
 
   def create
     instructor = Instructor.new(instructor_params)
-    instructor.save
+    if instructor.save
     redirect_to admin_instructor_path(instructor.id)
+    else
+    render :new
+    end
   end
 
   def show

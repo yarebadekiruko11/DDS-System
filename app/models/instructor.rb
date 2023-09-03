@@ -14,4 +14,7 @@ class Instructor < ApplicationRecord
   end
 
 
+
+
+
 end

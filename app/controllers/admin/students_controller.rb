@@ -18,9 +18,13 @@ class Admin::StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def update
+    student = Student.find(params[:id])
+    student.update
+    redirect_to admin_courses_path
   end
 
   private
