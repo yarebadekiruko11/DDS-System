@@ -14,5 +14,9 @@ class Student < ApplicationRecord
   Student.where('name LIKE ?' , content + '%')
  end
 
+ def self.looks(name)
+  @student = Student.where("student.name LIKE?", "#{name}%")
+ end
+
 
 end

@@ -7,9 +7,11 @@ class Instructor < ApplicationRecord
     # アソシエーション
   has_many :courses, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+
   # 検索機能
-  
+  def self.looks(name)
+    @instructor = Instructor.where("name LIKE?", "#{name}%")
+  end
 
 
 end

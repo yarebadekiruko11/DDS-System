@@ -20,7 +20,8 @@
         <div class="col-auto">
           <%= current_instructor.name %>
         </div>
-        <%= link_to "担当生徒一覧", students_path, class:"btn btn-info"%>
+        <%= link_to "担当生徒一覧", courses_path, class:"btn btn-info"%>
+        <%= link_to "在籍生徒一覧", courses_index_all_path, class:"btn btn-info"%>
 
     <%= form_with url: students_search_path, method: :get do |f| %>
       <form class="d-flex align-items-center" role="search">

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 管理者用devise
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -19,13 +18,17 @@ Rails.application.routes.draw do
 
 # 指導員側のroutes
   scope module: :instructor do
+    # 受講コース生徒
+    get 'courses/index_all'
+    resources :courses, only: [:index, :show] do
+    # コメント関係
+      resources :comments, only: [:create]
+    end
+
+
 
     # 生徒関係
-    resources :students, only: [:index, :show]
     get 'students/search'
-
-    # コメント関係
-    resources :comments, only: [:new, :create, :destroy, :index]
 
   end
 
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
 
     # ホーム画面
     get 'homes/top'
+    get 'homes/search'
 
     # 生徒関係
     resources :students, only: [:new, :create, :edit, :show, :update]

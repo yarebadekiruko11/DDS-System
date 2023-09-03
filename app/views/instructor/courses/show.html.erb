@@ -1,0 +1,62 @@
+  <h3>コース詳細</h3>
+
+  <table class="table">
+   <tbody>
+    <tr>
+     <th class="col-3">受講生徒名</th>
+     <td class="col-7"><%= @course.student.name %></td>
+    </tr>
+    <tr>
+     <th>住所</th>
+     <td><%= @course.student.address %></td>
+    </tr>
+    <tr>
+     <th>電話番号</th>
+     <td><%= @course.student.phone %></td>
+    </tr>
+   </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">入校日</th>
+      <th scope="col">担当者</th>
+      <th scope="col">受講車種</th>
+      <th scope="col">ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+     <td><%= l @course.start_time %></td>
+     <td><%= @course.instructor.name %></td>
+     <td><%= @course.car_model %></td>
+     <td>
+     <% if @course.status_i18n == "卒業" %>
+     <%= @course.graduation_day %>
+     <% else %>
+     在籍中
+     <% end %>
+     </td>
+    </tbody>
+  </table>
+
+<p>コメント件数：<%= @course.comments.count %></p>
+
+<div>
+ <%= form_with model: [@course, @comment] do |f| %>
+    <%= f.text_area :comment_body, size: '65*1', placeholder: "コメントをここに" %>
+    <%= f.submit "送信" %>
+  <% end %>
+
+</div>
+<div>
+
+<% @course.comments.each do |comment| %>
+ <p>
+ <%= l comment.created_at %>
+ <%= comment.instructor.name %>
+ <%= comment.comment_body %>
+ </p>
+
+<% end %>
+</div>

@@ -1,2 +1,97 @@
+<div>
+   <%= flash[:notice] %>
+ </div>
+
+ <% if @student.errors.any? %>
+  <%= @student.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @student.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>生徒基本情報編集</h5>
+    </div>
+  </div>
+
+<%= form_with model: @student, url: admin_students_path do |f| %>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-2 ml-4">
+    <p>名前</p>
+   </div>
+   <div class="col-1">
+    <%= f.label "(姓)" %>
+   </div>
+    <div class="col-3">
+    <%= f.text_field :last_name %>
+    </div>
+
+   <div class="col-1">
+    <%= f.label "(名)" %>
+    </div>
+    <div class="col-3">
+    <%= f.text_field :first_name %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-2 ml-4">
+    <p>フリガナ</p>
+   </div>
+   <div class="col-1">
+    <%= f.label "(セイ)" %>
+   </div>
+   <div class="col-3">
+    <%= f.text_field :last_name_kana %>
+   </div>
+
+   <div class="col-1">
+    <%= f.label "(メイ)" %>
+   </div>
+   <div class="col-3">
+    <%= f.text_field :first_name_kana %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>生年月日</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :birthday %>
+    </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>住所</p>
+   </div>
+   <div class="col-6">
+    <%= f.text_area :address, size: "65x1" %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>電話番号</p>
+   </div>
+   <div class="col-6">
+    <%= f.text_field :phone %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4"></div>
+   <div class="d-grid gap-2 col-6">
+    <%= f.submit "コース登録へ", class: 'btn btn-success px-5' %>
+
+   </div>
+  </div>
+    <% end %>
+
 <h1>Admin::Students#edit</h1>
 <p>Find me in app/views/admin/students/edit.html.erb</p>

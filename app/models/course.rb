@@ -7,5 +7,11 @@ class Course < ApplicationRecord
 
 # enum定義
  enum status: { enrolled: 0, graduation: 1, leaving: 2 }
+ 
+ def self.looks(name)
+  
+  @course = Course.where("course.student.name LIKE?", "#{name}%")
+ end
+ 
 
 end

@@ -1,6 +1,19 @@
   <div class="col-4">
     <!--生徒関連-->
     <p>生徒名検索</p>
+
+    <%= form_with url: admin_homes_search_path, method: :get do |f| %>
+
+      <form class="d-flex align-items-center" role="search">
+        <%= f.text_field :last_name, class: 'input form-control', type: 'search', placeholder: "生徒名検索", aria_label: 'Search' %>
+        <%= f.submit "検索", class: 'btn btn-success text-nowrap' %>
+      </form>
+
+    <% end %>
+
+
+
+
     <form class="d-flex align-items-center" role="search">
       <input class="form-control" type="search" placeholder="生徒名検索" aria-label="Search">
       <button class="btn btn-success mx-2 text-nowrap" type="submit">検索</button>

@@ -20,7 +20,7 @@
     <p>担当指導員</p>
    </div>
    <div class="col-6">
-    <%= f.select :corses.instructor.id, option_form_collection_for_select(Instructor.all, :id, :name) %>
+    <%= f.select :corses.instructor.id, options_from_collection_for_select(Instructor.all, :id, :name) %>
    </div>
   </div>
 

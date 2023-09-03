@@ -1,9 +1,4 @@
 class Instructor::StudentsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
 
   def search
     # 入力情報

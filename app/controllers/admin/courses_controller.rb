@@ -5,11 +5,11 @@ class Admin::CoursesController < ApplicationController
   end
 
   def day_index
-    # @courses = Course.find(params[:start_time])
+    # 文字列で送られたパラメータをdatetimeクラスに変換
     start_time = params[:start_time].to_datetime
+
     # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
     @courses = Course.where(start_time: start_time.all_day)
-
     # @courses = Course.where(start_time: params[:id])
   end
 
