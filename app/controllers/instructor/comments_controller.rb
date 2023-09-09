@@ -19,7 +19,7 @@ class Instructor::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:instructor_id, :course_id, :comment_body)
+    params.require(:comment).permit(:instructor_id, :course_id, :comment_body, :howmany)
   end
 
 

@@ -1,6 +1,7 @@
 class Instructor::CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
+    # @course.comments = @course.comments.order(created_at: :desc)
     @comment = Comment.new
 
   end
@@ -13,10 +14,10 @@ class Instructor::CoursesController < ApplicationController
     @instructor = current_instructor
     @courses = @instructor.courses
   end
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
 end

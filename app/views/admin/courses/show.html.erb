@@ -23,7 +23,7 @@
      <td><%= @course.instructor.name %></td>
     </tr>
     <tr>
-     <th>入校日<th>
+     <th>入校日</th>
      <td><%= l @course.start_time %></td>
     </tr>
     <tr>
@@ -31,7 +31,7 @@
      <td><%= @course.car_model_i18n %></td>
     </tr>
     <tr>
-     <th>受講ステータス<th>
+     <th>受講ステータス</th>
      <td><%= @course.status_i18n %></td>
     </tr>
     <tr>
@@ -48,7 +48,8 @@
    </tbody>
   </table>
 
-   <%= link_to "編集する", edit_admin_course_path(@course.id), class: "btn btn-success px-5" %>
+   <%= link_to "コース編集", edit_admin_course_path(@course.id), class: "btn btn-success px-5" %>
+   <%= link_to "生徒情報変更",edit_admin_student_path(@course.student.id), class: "btn btn-outline-success" %>
 
  </div>
 </div>

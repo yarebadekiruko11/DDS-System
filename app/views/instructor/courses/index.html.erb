@@ -13,7 +13,7 @@
       <% @courses.each do |course| %>
       <tr>
        <td><%= link_to course.student.name, course_path(course.id) %></td>
-       <td><%= course.car_model %></td>
+       <td><%= course.car_model_i18n %></td>
        <td><%= course.status_i18n %></td>
        <td><%= l course.start_time %></td>
        <td><%= "#{course.comments.count} コメント" %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_03_100012) do
+ActiveRecord::Schema.define(version: 2023_09_09_192119) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2023_09_03_100012) do
     t.text "comment_body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "howmany"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 2023_09_03_100012) do
     t.date "graduation_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "car_model", limit: 3, default: 0, null: false
+    t.integer "car_model"
   end
 
   create_table "instructors", force: :cascade do |t|
