@@ -3,8 +3,8 @@ class Admin::HomesController < ApplicationController
 
   def top
     @courses = Course.all
-    # @schedules = Schedule.where("class_day >= ?", Time.zone.today)
-    @schedules = Schedule.order("class_time")
+    @schedules = Schedule.where("class_day >= ?", Time.zone.today)
+    # @schedules = Schedule.order("class_time")
   end
 
   def search

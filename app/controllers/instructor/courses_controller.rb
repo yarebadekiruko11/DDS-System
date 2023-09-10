@@ -14,6 +14,7 @@ class Instructor::CoursesController < ApplicationController
     @instructor = current_instructor
     @courses = @instructor.courses
     @schedules = @instructor.schedules
+    @today_schedules = @schedules.where("class_day >= ?", Time.zone.today)
   end
 
 

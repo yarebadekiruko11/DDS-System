@@ -9,10 +9,11 @@
      </tr>
     </thead>
     <tbody>
-  <% @schedules.each do |schedule| %>
+  <% @today_schedules.each do |schedule| %>
   <tr>
    <td><%= schedule.class_time %></td>
    <td><%= schedule.course.course_name %></td>
+   <td><%= schedule.class_day %>
   </tr>
   <% end %>
   </tbody>

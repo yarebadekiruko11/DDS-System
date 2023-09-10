@@ -23,7 +23,7 @@ class Admin::StudentsController < ApplicationController
 
   def update
     student = Student.find(params[:id])
-    student.update
+    student.update(student_params)
     redirect_to admin_courses_path
   end
 

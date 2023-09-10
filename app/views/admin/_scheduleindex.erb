@@ -9,6 +9,8 @@
       <th scope="col-1">時限</th>
       <th scope="col-5">受講生徒/車種</th>
       <th scope="col-2">担当指導員</th>
+      <th scope="col-2">受講日</th>
+      <th scope="col-2"></th>
      </tr>
     </thead>
     <tbody>
@@ -18,9 +20,12 @@
       <td><%= link_to "#{schedule.class_time}限目",admin_schedule_path(schedule.id) %></td>
       <td><%= schedule.course.course_name %></td>
       <td><%= schedule.instructor.name %></td>
+      <td><%= schedule.class_day %></td>
       <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %></td>
      <tr>
      <% end %>
     </tbody>
    </table>
+   <%= link_to "予定一覧", admin_schedules_path, class:"btn btn-info" %>
  </div>
+

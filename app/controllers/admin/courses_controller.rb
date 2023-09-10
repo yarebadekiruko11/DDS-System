@@ -5,12 +5,19 @@ class Admin::CoursesController < ApplicationController
   end
 
   def day_index
+    if params[:start_time]
     # 文字列で送られたパラメータをdatetimeクラスに変換
     @start_time = params[:start_time].to_datetime
 
     # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
     @courses = Course.where(start_time: @start_time.all_day)
     # @courses = Course.where(start_time: params[:id])
+    else
+      @graduation_day = params[:graduation_day].to_datetime
+      @courses = Course.where(graduation_day: @graduation_day.all_day)
+    end
+
+
   end
 
   def create

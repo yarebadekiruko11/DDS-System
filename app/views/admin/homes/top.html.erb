@@ -7,8 +7,13 @@
      <%= date.day %>
    <br>
     <% if courses.count > 0 %>
-     <%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
+     入校数:<%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
+    <% end %>
+    <%# pp date, @courses.where(graduation_day: date).count %>
+    <% if @courses.where(graduation_day: date).count > 0%>
+    卒業数:<%= link_to @courses.where(graduation_day: date).count, admin_courses_day_index_path(graduation_day: date) %>件
     <% end %>
    <% end %>
  </div>
+
 </div>
