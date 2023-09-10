@@ -20,15 +20,13 @@ Rails.application.routes.draw do
 # 指導員側のroutes
   scope module: :instructor do
     # 受講コース生徒
-    get 'courses/index_all'
+    # get 'courses/index_all'
     resources :courses, only: [:index, :show] do
     # コメント関係
       resources :comments, only: [:create]
     end
 
-
-
-    # 生徒関係
+    # 生徒検索
     get 'students/search'
 
   end
@@ -41,15 +39,13 @@ Rails.application.routes.draw do
     get 'homes/search'
 
     # 生徒関係
-    resources :students, only: [:new, :create, :edit, :show, :update]
+    resources :students, only: [:new, :create, :edit, :show, :update, :index]
     get 'students/search'
 
     # コース登録
     get 'courses/day_index' => 'courses#day_index'
     get 'courses/search'
     resources :courses, only: [:create, :show, :edit, :index, :update]
-
-
 
     # 指導員登録
     resources :instructors

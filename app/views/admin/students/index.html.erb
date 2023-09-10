@@ -1,2 +1,24 @@
-<h1>Admin::Students#index</h1>
-<p>Find me in app/views/admin/students/index.html.erb</p>
+<table class="table">
+    <thead>
+     <tr>
+      <th scope="col">生徒名</th>
+      <th scope="col">カナ</th>
+      <th scope="col">登録車種</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+     <tr>
+       <td><%= student.name %></td>
+       <td><%= student.kana %></td>
+       <td>
+         <% student.courses.each do |course| %>
+          <%= course.car_model_i18n %>
+         <% end %>
+       </td>
+       <td><%= link_to "車種追加", admin_student_path(student.id) %></td>
+       <td><%= link_to "情報編集", edit_admin_student_path(student.id) %></td>
+     </tr>
+<% end %>
+     </tbody>
+    </table>

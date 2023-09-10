@@ -49,8 +49,7 @@ class Admin::CoursesController < ApplicationController
     if params[:car_model] == "standard"
       @courses = Course.where(car_model: 0)
       @keyword = params[:keyword]
-    elsif
-      params[:car_model] == "bike"
+    elsif params[:car_model] == "bike"
       @courses = Course.where(car_model: 1)
       @keyword = params[:keyword]
     else

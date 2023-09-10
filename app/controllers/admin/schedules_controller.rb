@@ -25,7 +25,7 @@ class Admin::SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all.order("class_day")
+    @schedules = Schedule.all.order(class_day: "DESC", class_time: "DESC")
   end
 
   def show
@@ -33,8 +33,9 @@ class Admin::SchedulesController < ApplicationController
   end
 
   def destroy
-
-
+    schedule = Schedule.find(params[:id])
+    schedule.destroy
+    redirect_to admin_homes_top_path
   end
 
   private

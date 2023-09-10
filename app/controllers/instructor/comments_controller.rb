@@ -1,6 +1,4 @@
 class Instructor::CommentsController < ApplicationController
-  def new
-  end
 
   def create
     course = Course.find(params[:course_id])
@@ -8,12 +6,6 @@ class Instructor::CommentsController < ApplicationController
     comment.course_id = course.id
     comment.save
     redirect_to course_path(course)
-  end
-
-  def destroy
-  end
-
-  def index
   end
 
   private

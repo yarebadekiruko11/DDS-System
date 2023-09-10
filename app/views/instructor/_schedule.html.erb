@@ -1,0 +1,21 @@
+ <div class="col-4 mt-2">
+  <h6><%= "#{ l Time.zone.today}の予定" %></h6>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">時限</th>
+      <th scope="col">受講コース</th>
+     </tr>
+    </thead>
+    <tbody>
+  <% today_schedules.each do |schedule| %>
+  <tr>
+   <td><%= schedule.class_time %></td>
+   <td><%= schedule.course.course_name %></td>
+   <td><% course = schedule.course %>
+    <%= link_to "詳細", course_path(course.id) %>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+ </div>

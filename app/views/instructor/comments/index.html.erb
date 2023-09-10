@@ -1,2 +1,24 @@
 <h1>Instructor::Comments#index</h1>
 <p>Find me in app/views/instructor/comments/index.html.erb</p>
+
+<h5 class="d-flex justify-content-start bg-success p-2 text-dark bg-opacity-50">コメント内容</h5>
+  <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">日時</th>
+      <th sclpe="col">受講者名</th>
+      <th scope="col">段階</th>
+      <th scope="col">コメント者</th>
+      <th scope="col">内容</th>
+     </tr>
+    </thead>
+ <% @comments.each do |comment| %>
+    <tbody>
+     <td><%= l comment.created_at %></td>
+     <td><%= comment.course.id %></td>
+     <td><%= comment.howmany %></td>
+     <td><%= comment.instructor.name %></td>
+     <td><%= comment.comment_body %></td>
+    </tbody>
+ <% end %>
+  </table>
