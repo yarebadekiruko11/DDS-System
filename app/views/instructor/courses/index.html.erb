@@ -1,4 +1,26 @@
-<h1>担当受講生徒一覧</h1>
+<div class="row">
+ <div class="col-4 mt-2">
+  <h6><%= "#{ l Time.zone.today}の予定" %></h6>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">時限</th>
+      <th scope="col">受講コース</th>
+     </tr>
+    </thead>
+    <tbody>
+  <% @schedules.each do |schedule| %>
+  <tr>
+   <td><%= schedule.class_time %></td>
+   <td><%= schedule.course.course_name %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+ </div>
+
+ <div class="col-8 mt-2">
+<h6>担当受講生徒一覧</h6>
    <table class="table">
     <thead>
      <tr>
@@ -21,3 +43,5 @@
       <% end %>
     </tbody>
    </table>
+  </div>
+</div>

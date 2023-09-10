@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 管理者用devise
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -45,11 +46,16 @@ Rails.application.routes.draw do
 
     # コース登録
     get 'courses/day_index' => 'courses#day_index'
+    get 'courses/search'
     resources :courses, only: [:create, :show, :edit, :index, :update]
+
 
 
     # 指導員登録
     resources :instructors
+
+    # スケジュール
+    resources :schedules
 
   end
 

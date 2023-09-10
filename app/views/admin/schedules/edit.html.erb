@@ -1,0 +1,43 @@
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>時間割変更</h5>
+    </div>
+  </div>
+
+<%= form_with model: @schedule, url: admin_schedule_path(@schedule.id), method: :patch do |f| %>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-2 ml-4">
+     <p>受講日</p>
+    </div>
+    <div class="col-3">
+    <%= f.date_select :class_day %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-2 ml-4">
+     <p>受講時間</p>
+    </div>
+    <div class="col-2">
+      <%= f.select :class_time, *[1..5] %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-2">指導員</div>
+    <div class="col-3">
+     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <br>
+    <div class="col-2">コース</div>
+    <div class="col">
+     <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :course_name) %>
+    </div>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "保存", class: 'btn btn-success' %>
+  </div>
+<% end %>

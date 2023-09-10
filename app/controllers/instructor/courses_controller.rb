@@ -13,6 +13,7 @@ class Instructor::CoursesController < ApplicationController
   def index
     @instructor = current_instructor
     @courses = @instructor.courses
+    @schedules = @instructor.schedules
   end
 
 

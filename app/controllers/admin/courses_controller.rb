@@ -14,10 +14,7 @@ class Admin::CoursesController < ApplicationController
   end
 
   def create
-
     @course = Course.new(course_params)
-    # @course.student_id = student.id
-
     if @course.save!
       redirect_to admin_course_path(@course.id)
     else
@@ -36,10 +33,23 @@ class Admin::CoursesController < ApplicationController
     redirect_to admin_course_path(course.id)
   end
 
-
   def show
     @course = Course.find(params[:id])
+  end
 
+  def search
+
+    if params[:car_model] == "standard"
+      @courses = Course.where(car_model: 0)
+      @keyword = params[:keyword]
+    elsif
+      params[:car_model] == "bike"
+      @courses = Course.where(car_model: 1)
+      @keyword = params[:keyword]
+    else
+      @courses = Course.where(car_model: 2)
+      @keyword = params[:keyword]
+    end
 
   end
 

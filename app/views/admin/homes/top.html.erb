@@ -1,17 +1,14 @@
 <div class="row mt-4">
-  <%= render 'admin/search' %>
-  
-
-  <div class="col">
-<%= month_calendar events: @courses do |date, courses| %>
-  <%= date.day %>
-  <br>
-  <% if courses.count > 0 %>
-   <%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
-  <% end %>
+  <%= render 'admin/scheduleindex', schedules: @schedules %>
 
 
-
-<% end %>
-  </div>
+ <div class="col-7">
+   <%= month_calendar events: @courses do |date, courses| %>
+     <%= date.day %>
+   <br>
+    <% if courses.count > 0 %>
+     <%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
+    <% end %>
+   <% end %>
+ </div>
 </div>

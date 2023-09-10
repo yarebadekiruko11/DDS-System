@@ -10,12 +10,10 @@ class Student < ApplicationRecord
   last_name_kana + first_name_kana
  end
 
- def self.search_for(content)
-  Student.where('name LIKE ?' , content + '%')
- end
-
- def self.looks(name)
-  @student = Student.where("student.name LIKE?", "#{name}%")
+ def self.search(keyword)
+  Student.where("last_name LIKE ? OR first_name LIKE ? OR first_name_kana LIKE ? OR last_name_kana LIKE ? ", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+  # where(" LIKE ?", "%#{keyword}%")
+  # Student.where('name LIKE ?' , content + '%')
  end
 
 
