@@ -50,6 +50,7 @@
 
    <%= link_to "コース編集", edit_admin_course_path(@course.id), class: "btn btn-success px-5" %>
    <%= link_to "生徒情報変更",edit_admin_student_path(@course.student.id), class: "btn btn-outline-success" %>
+   <%= link_to "新規コース追加", admin_student_path(@course.student.id), class: "btn btn-outline-info" %>
 
  </div>
 </div>

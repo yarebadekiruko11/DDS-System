@@ -3,8 +3,16 @@ class Admin::HomesController < ApplicationController
 
   def top
     @courses = Course.all
+    @allschedules = Schedule.all
     @schedules = Schedule.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
     # @schedules = Schedule.order("class_time")
+    @beginning_of_month = Time.zone.now.beginning_of_month
+    @end_of_month = Time.zone.now.end_of_month
+    @beginning_end_month = @beginning_of_month..@end_of_month
+
+    @startcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
+    @endcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
+
   end
 
   def search
@@ -13,9 +21,7 @@ class Admin::HomesController < ApplicationController
     if @range == "受講生徒"
        @students = Student.search(params[:keyword])
        @keyword = params[:keyword]
-      # pp "params[:word]------------------------------------------#{params[:word].class}"
-      # pp "@students------------------------------------------#{@students.inspect}"
-      # @courses = @students.courses
+
       @courses = []
       @students.each do |student|
 
@@ -25,10 +31,6 @@ class Admin::HomesController < ApplicationController
        @instructors = Instructor.search(params[:keyword])
        @keyword = params[:keyword]
     end
-    # @students = Student.looks(params[:last_name])
-
-    # @courses = Course.looks(params[:name])
-    # @courses.student.name
 
   end
 

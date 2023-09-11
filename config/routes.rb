@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/search'
 
+
     # 生徒関係
     resources :students, only: [:new, :create, :edit, :show, :update, :index]
     get 'students/search'
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
     resources :instructors
 
     # スケジュール
+    get 'schedules/dayplan'
     resources :schedules
 
   end

@@ -38,6 +38,15 @@ class Admin::SchedulesController < ApplicationController
     redirect_to admin_homes_top_path
   end
 
+  def dayplan
+    # 文字列で送られたパラメータをdatetimeクラスに変換
+    @class_day = params[:class_day].to_date
+    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+
+  end
+
+
+
   private
 
   def schedule_params

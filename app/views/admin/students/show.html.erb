@@ -8,13 +8,13 @@
 
 <%= @student.name %>
 <%= f.hidden_field :student_id, :value => @student.id %>
+<%= @student.brithday %>
 
   <div class="row justify-content-start mt-3">
    <div class="col-3 ml-4">
     <p>受講車種</p>
    </div>
    <div class="col-6">
-    <%#= f.select :car_model, [['普通車'],['二輪'],['その他']] %>
     <%= f.select :car_model, Course.car_models_i18n.invert %>
    </div>
   </div>

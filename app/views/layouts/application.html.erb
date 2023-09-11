@@ -20,8 +20,7 @@
         <div class="col-auto">
           <%= current_instructor.name %>
         </div>
-        <%= link_to "トップへ", courses_path, class:"btn btn-info"%>
-        <%#= link_to "在籍生徒一覧", courses_index_all_path, class:"btn btn-info"%>
+        <%= link_to "トップへ", courses_path, class:"btn btn-info" %>
 
     <%= form_with url: students_search_path, local: true, method: :get do |f| %>
       <form class="d-flex align-items-center" role="search">
@@ -39,12 +38,10 @@
       <div class="container-fluid justify-content-around">
 
         <div class="col-auto">
-          <%= link_to "Top", admin_homes_top_path, class:"btn btn-info me-2"%>
-          <%= link_to "新規生徒登録", new_admin_student_path, class: 'btn btn-primary me-2' %>
-          <%= link_to "新規指導員登録", new_admin_instructor_path, class: 'btn btn-primary' %>
+          <%= link_to "Top", admin_homes_top_path, class:"btn btn-info me-2" %>
         </div>
             <%= form_with url: admin_homes_search_path, local: true, method: :get do |f| %>
-        <form class="d-flex align-items-center" role="search">
+        <form class="d-flex align-items-end" role="search">
          <%= f.text_field :keyword %>
          <%= f.select :range, options_for_select([['受講生徒'],['指導員']]) %>
          <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
