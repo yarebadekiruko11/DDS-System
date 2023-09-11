@@ -1,16 +1,21 @@
+<div class="row mt-4">
 
+  <%= render 'admin/scheduleindex', schedules: @schedules %>
+
+<div class="col">
 
 
   <%= link_to "新規生徒登録", new_admin_student_path, class: 'btn btn-primary' %>
   <%= link_to "新規指導員登録", new_admin_instructor_path, class: 'btn btn-primary' %>
-
+<br><br>
 
    <h4>今月入校数<%= @startcourses.count %>件,卒業数<%= @endcourses.count %></h4>
 
    <%= month_calendar events: @courses do |date, courses| %>
      <%= date.day %>
+     <br>
      <% if @allschedules.where(class_day: date).count > 0 %>
-     <%= link_to "予約あり", admin_schedules_dayplan_path(class_day: date) %>
+     <%= link_to "時間割", admin_schedules_dayplan_path(class_day: date) %>
     <% end %>
    <br>
     <% if courses.count > 0 %>
@@ -23,4 +28,5 @@
     <% end %>
    <% end %>
 
-
+</div>
+</div>

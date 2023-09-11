@@ -1,15 +1,20 @@
-
- <div class="col">
-  <h8><%= l Time.zone.today %>本日の時間割</h8>
-<br>
-   <%= link_to "予定追加", new_admin_schedule_path, class: 'btn btn-primary' %>
-   <table class="table">
+ <div class="col-4">
+   <%= link_to "予約登録", new_admin_schedule_path, class: 'btn btn-success' %>
+   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary" %>
+   <br>
+   <br>
+  <h7><%= l Time.zone.today %>本日の時間割</h7>
+  <br>
+   <table class="table overflow-y:scroll;">
     <thead>
      <tr>
-      <th scope="col-1">時限</th>
-      <th scope="col-5">受講生徒/車種</th>
-      <th scope="col-2">担当指導員</th>
-      <th scope="col-2"></th>
+      <th scope="col">時限</th>
+      <th scope="col">
+       担当指導員
+       <br>
+       受講生徒/車種
+      </th>
+      <th scope="col"></th>
      </tr>
     </thead>
     <tbody>
@@ -17,15 +22,19 @@
      <% schedules.each do |schedule| %>
      <tr>
       <td><%= "#{schedule.class_time}限" %></td>
-      <td><%= schedule.course.course_name %></td>
-      <td><%= schedule.instructor.name %></td>
-      <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
-          <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <td>
+       <%= schedule.instructor.name %>
+       <br>
+       <%= schedule.course.course_name %>
+      </td>
+      <td>
+       <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
+       <br>
+       <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </td>
      <tr>
      <% end %>
     </tbody>
    </table>
-   <%= link_to "予定一覧", admin_schedules_path, class:"btn btn-info" %>
  </div>
 

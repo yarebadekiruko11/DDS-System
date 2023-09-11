@@ -2,10 +2,17 @@ class Admin::HomesController < ApplicationController
   before_action :set_beginning_of_week
 
   def top
+    
+    # カレンダー使用コード
     @courses = Course.all
+    
+    # 各日スケジュール取得コード
     @allschedules = Schedule.all
+    
+    # 当日スケジュール取得コード
     @schedules = Schedule.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
-    # @schedules = Schedule.order("class_time")
+    
+    # 当月の入校・卒業数算出用コード
     @beginning_of_month = Time.zone.now.beginning_of_month
     @end_of_month = Time.zone.now.end_of_month
     @beginning_end_month = @beginning_of_month..@end_of_month

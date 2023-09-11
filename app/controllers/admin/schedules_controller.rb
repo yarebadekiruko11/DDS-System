@@ -1,6 +1,6 @@
 class Admin::SchedulesController < ApplicationController
   def new
-    @schedules = Schedule.where("class_day >= ?", Time.zone.today)
+    @schedules = Schedule.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
     @schedule = Schedule.new
   end
 
@@ -42,6 +42,24 @@ class Admin::SchedulesController < ApplicationController
     # 文字列で送られたパラメータをdatetimeクラスに変換
     @class_day = params[:class_day].to_date
     @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+
+        # カレンダー使用コード
+    @courses = Course.all
+
+    # 各日スケジュール取得コード
+    @allschedules = Schedule.all
+
+    # 当月の入校・卒業数算出用コード
+    @beginning_of_month = Time.zone.now.beginning_of_month
+    @end_of_month = Time.zone.now.end_of_month
+    @beginning_end_month = @beginning_of_month..@end_of_month
+
+    @startcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
+    @endcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
+
+
+
+
 
   end
 

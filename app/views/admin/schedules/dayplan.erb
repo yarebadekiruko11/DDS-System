@@ -1,15 +1,22 @@
+<div class="row mt-4">
+ <div class="col-4">
 
- <div class="col">
-  <h8><%= l @class_day %>の時間割</h8>
-<br>
-   <%= link_to "予定追加", new_admin_schedule_path, class: 'btn btn-primary' %>
+   <%= link_to "予約登録", new_admin_schedule_path, class: 'btn btn-success' %>
+   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary" %>
+   <br>
+   <br>
+  <h7><%= l @class_day %>の時間割</h7>
+     <br>
    <table class="table">
     <thead>
      <tr>
-      <th scope="col-1">時限</th>
-      <th scope="col-5">受講生徒/車種</th>
-      <th scope="col-2">担当指導員</th>
-      <th scope="col-2"></th>
+      <th scope="col">時限</th>
+      <th scope="col">
+       担当指導員
+       <br>
+       受講生徒/車種
+      </th>
+      <th scope="col"></th>
      </tr>
     </thead>
     <tbody>
@@ -17,14 +24,47 @@
      <% @schedules.each do |schedule| %>
      <tr>
       <td><%= "#{schedule.class_time}限" %></td>
-      <td><%= schedule.course.course_name %></td>
-      <td><%= schedule.instructor.name %></td>
-      <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
-          <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <td>
+       <%= schedule.instructor.name %>
+       <br>
+       <%= schedule.course.course_name %>
+       </td>
+      <td>
+       <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
+      <br>
+       <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </td>
      <tr>
      <% end %>
     </tbody>
    </table>
-   <%= link_to "予定一覧", admin_schedules_path, class:"btn btn-info" %>
  </div>
+<div class="col">
+
+
+  <%= link_to "新規生徒登録", new_admin_student_path, class: 'btn btn-primary' %>
+  <%= link_to "新規指導員登録", new_admin_instructor_path, class: 'btn btn-primary' %>
+<br>
+<br>
+
+   <h4>今月入校数<%= @startcourses.count %>件,卒業数<%= @endcourses.count %></h4>
+
+   <%= month_calendar events: @courses do |date, courses| %>
+     <%= date.day %>
+     <br>
+     <% if @allschedules.where(class_day: date).count > 0 %>
+     <%= link_to "時間割", admin_schedules_dayplan_path(class_day: date) %>
+    <% end %>
+   <br>
+    <% if courses.count > 0 %>
+     入校:<%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
+    <% end %>
+    <br>
+    <%# pp date, @courses.where(graduation_day: date).count %>
+    <% if @courses.where(graduation_day: date).count > 0%>
+    卒業:<%= link_to @courses.where(graduation_day: date).count, admin_courses_day_index_path(graduation_day: date) %>件
+    <% end %>
+   <% end %>
+
+ </div>
+</div>
