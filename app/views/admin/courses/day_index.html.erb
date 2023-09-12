@@ -25,6 +25,8 @@
       <% end %>
     </tbody>
    </table>
+   <%= paginate @courses %>
+
    <% else %>
     <h3><%= l @graduation_day %>の卒業件数 <%= @courses.count %>件</h3>
    <table class="table">
@@ -49,6 +51,7 @@
       <% end %>
     </tbody>
    </table>
+   <%= paginate @courses %>
 <% end %>
 
  </div>

@@ -42,7 +42,7 @@
         </div>
             <%= form_with url: admin_homes_search_path, local: true, method: :get do |f| %>
         <form class="d-flex align-items-end" role="search">
-         <%= f.text_field :keyword %>
+         <%= f.text_field :keyword, placeholder: "名前検索" %>
          <%= f.select :range, options_for_select([['受講生徒'],['指導員']]) %>
          <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
         </form>

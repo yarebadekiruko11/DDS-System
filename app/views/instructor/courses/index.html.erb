@@ -22,7 +22,9 @@
        <td><%= "#{course.comments.count} コメント" %></td>
       </tr>
       <% end %>
+
     </tbody>
    </table>
+   <%= paginate @courses %>
   </div>
 </div>

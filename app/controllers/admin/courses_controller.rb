@@ -1,7 +1,7 @@
 class Admin::CoursesController < ApplicationController
 
   def index
-    @courses = Course.all
+    @courses = Course.page(params[:page])
   end
 
   def day_index
@@ -10,11 +10,11 @@ class Admin::CoursesController < ApplicationController
     @start_time = params[:start_time].to_datetime
 
     # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
-    @courses = Course.where(start_time: @start_time.all_day)
+    @courses = Course.where(start_time: @start_time.all_day).page(params[:page])
     # @courses = Course.where(start_time: params[:id])
     else
       @graduation_day = params[:graduation_day].to_datetime
-      @courses = Course.where(graduation_day: @graduation_day.all_day)
+      @courses = Course.where(graduation_day: @graduation_day.all_day).page(params[:page])
     end
 
 
@@ -47,14 +47,14 @@ class Admin::CoursesController < ApplicationController
   def search
 
     if params[:car_model] == "standard"
-      @courses = Course.where(car_model: 0)
-      @keyword = params[:keyword]
+      @courses = Course.where(car_model: 0).page(params[:page])
+      @keyword = "普通車"
     elsif params[:car_model] == "bike"
-      @courses = Course.where(car_model: 1)
-      @keyword = params[:keyword]
+      @courses = Course.where(car_model: 1).page(params[:page])
+      @keyword = "二輪"
     else
-      @courses = Course.where(car_model: 2)
-      @keyword = params[:keyword]
+      @courses = Course.where(car_model: 2).page(params[:page])
+      @keyword = "その他"
     end
 
   end

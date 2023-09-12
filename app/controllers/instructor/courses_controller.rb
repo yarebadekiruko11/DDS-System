@@ -16,7 +16,7 @@ class Instructor::CoursesController < ApplicationController
 
   def index
     @instructor = current_instructor
-    @courses = @instructor.courses
+    @courses = @instructor.courses.page(params[:page])
     @schedules = @instructor.schedules
     @today_schedules = @schedules.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
 

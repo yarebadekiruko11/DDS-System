@@ -1,6 +1,6 @@
 class Admin::SchedulesController < ApplicationController
   def new
-    @schedules = Schedule.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
+    @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
     @schedule = Schedule.new
   end
 
