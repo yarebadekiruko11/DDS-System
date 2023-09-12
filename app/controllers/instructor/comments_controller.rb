@@ -5,9 +5,10 @@ class Instructor::CommentsController < ApplicationController
     comment = current_instructor.comments.new(comment_params)
     comment.course_id = course.id
     if comment.save
+      flash[:notice] = "コメントしました"
      redirect_to course_path(course)
     else
-     flash[:notice] = "コメントを入力してください"
+      flash[:alert] = "コメントを入力してください"
      redirect_to course_path(course)
     end
   end

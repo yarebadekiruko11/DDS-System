@@ -1,9 +1,6 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
  <div class="col">
-   <div>
-    <%= flash[:notice] %>
-   </div>
 
  <% if @student.errors.any? %>
   <%= @student.errors.count %>件のエラーが発生しました

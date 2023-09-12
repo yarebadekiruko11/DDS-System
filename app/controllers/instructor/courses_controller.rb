@@ -2,7 +2,7 @@ class Instructor::CoursesController < ApplicationController
   def show
     @instructor = current_instructor
     @schedules = @instructor.schedules
-    @today_schedules = @schedules.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
+    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
     @course = Course.find(params[:id])
     # @course.comments = @course.comments.order(created_at: "DESC")
@@ -18,7 +18,7 @@ class Instructor::CoursesController < ApplicationController
     @instructor = current_instructor
     @courses = @instructor.courses.page(params[:page])
     @schedules = @instructor.schedules
-    @today_schedules = @schedules.where("class_day >= ?", Time.zone.today).order(class_time: "ASC")
+    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
   end
 
