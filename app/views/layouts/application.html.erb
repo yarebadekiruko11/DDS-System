@@ -17,18 +17,19 @@
   <% if instructor_signed_in? %>
     <header class="navbar navbar-expand bg-dark-subtle py-4">
       <div class="container-fluid justify-content-around">
-        <div class="col-auto">
-          <%= current_instructor.name %>
+        <div class="col">
+        <%= link_to "#{current_instructor.name}マイページ", courses_path, class:"btn btn-dark btn-sm" %>
+        <%= link_to "コメント履歴", comments_path, class:"btn btn-success btn-sm" %>
         </div>
-        <%= link_to "トップへ", courses_path, class:"btn btn-info" %>
-
+      </div>
+      <div class="container-fluid justify-content-end">
     <%= form_with url: students_search_path, local: true, method: :get do |f| %>
       <form class="d-flex align-items-center" role="search">
         <%= f.text_field :keyword, placeholder: "生徒名検索" %>
-        <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
+        <%= f.submit "検索", class: 'btn btn-success text-nowrap btn-sm' %>
       </form>
     <% end %>
-        <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, class:"btn btn-secondary"%>
+        <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, class:"btn btn-secondary ms-5 btn-sm"%>
       </div>
     </header>
 
@@ -57,10 +58,10 @@
     <!--ログイン前-->
   <% else %>
     <header class="navbar navbar-expand bg-dark-subtle py-4">
-      <div class="container-fluid justify-content-start">
+      <div class="container-fluid justify-content-around">
        <%= link_to "指導員用ログインページへ", instructor_session_path, class:"btn btn-dark text-nowrap" %>
-      </div>
-      <div class="container-fluid justify-content-end">
+      <!--</div>-->
+      <!--<div class="container-fluid justify-content-end">-->
        <%= link_to "管理者用", admin_session_path, class:"btn btn-outline-dark text-nowrap" %>
       </div>
     </header>

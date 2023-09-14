@@ -8,9 +8,29 @@ class Instructor::CommentsController < ApplicationController
       flash[:notice] = "コメントしました"
      redirect_to course_path(course)
     else
-      flash[:alert] = "コメントを入力してください"
+      flash[:notice] = "入力してください"
      redirect_to course_path(course)
     end
+  end
+
+  def index
+    # 共通レイアウトスケジュール用
+    @schedules = current_instructor.schedules
+    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+
+    course = Course.find(params[:course_id])
+    @comments = course.comments
+    @comments_top = "#{course.course_name}のコメント一覧"
+  end
+
+  def all_comments
+    # 共通レイアウトスケジュール用
+    @schedules = current_instructor.schedules
+    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+
+    @comments = current_instructor.comments
+    @comments_top = "コメント履歴"
+    render :index
   end
 
   private
@@ -18,7 +38,5 @@ class Instructor::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:instructor_id, :course_id, :comment_body, :howmany)
   end
-
-
 
 end

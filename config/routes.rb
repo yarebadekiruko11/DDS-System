@@ -23,8 +23,10 @@ Rails.application.routes.draw do
     # get 'courses/index_all'
     resources :courses, only: [:index, :show] do
     # コメント関係
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :index]
     end
+    get 'comments' => 'comments#all_comments'
+    
 
     # 生徒検索
     get 'students/search'

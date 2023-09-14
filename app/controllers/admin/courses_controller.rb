@@ -20,6 +20,8 @@ class Admin::CoursesController < ApplicationController
 
   end
 
+
+
   def create
     @course = Course.new(course_params)
     if @course.save!

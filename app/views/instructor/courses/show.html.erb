@@ -1,6 +1,15 @@
 <div class="row mt-3">
    <%= render 'instructor/schedule', today_schedules: @today_schedules %>
- <div class="col-9 mt-2">
+ <div class="col-8 mt-2">
+
+   <% if @comment.errors.any? %>
+  <%= @comment.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 
   <h7 class="d-inline-flex justify-content-start bg-success p-1 text-dark bg-opacity-50">受講者情報</h7>
@@ -40,7 +49,7 @@
  <%= form_with model: [@course, @comment] do |f| %>
    <%= f.label :"段階選択" %>
    <%= f.select :howmany, options_for_select(['1段階-1','1-2','1-3','1-4','1-5','1-6','1-7','1-8','1-9','1-10','1-11以降',
-        '2段階-1','2-2','2-3','2-4','2-5','2-6','2-7','2-8','2-9','2-10','2-11以降']) %>
+        '2段階-1','2-2','2-3','2-4','2-5','2-6','2-7','2-8','2-9','2-10','2-11以降']), {include_blank: '選択してください'} %>
   <div class="row my-2 align-items-center">
    <div class="col-10">
     <!--<input class="form-control form-control-sm" type="text" placeholder="コメントをここに" aria-label=".form-control-sm example">-->
@@ -53,7 +62,10 @@
   <% end %>
 
 <h7 class="d-inline-flex justify-content-start bg-info p-1 text-dark bg-opacity-25">
-   コメント内容(<%= @course.comments.count %>件)</h7>
+   新着順コメント(<%= @course.comments.count %>件)
+   </h7>
+   <%= link_to "全件表示", course_comments_path(@course.id), class:"btn btn-outline-info btn-sm" %>
+
   <table class="table">
     <thead>
      <tr>
@@ -63,7 +75,7 @@
       <th scope="col-auto">内容</th>
      </tr>
     </thead>
- <% @course.comments.each do |comment| %>
+ <% @comments.each do |comment| %>
     <tbody>
      <td><%= l comment.created_at %></td>
      <td><%= comment.howmany %></td>
@@ -72,6 +84,9 @@
     </tbody>
  <% end %>
   </table>
+   <%= paginate @comments %>
+
+
 
 </div>
 </div>
