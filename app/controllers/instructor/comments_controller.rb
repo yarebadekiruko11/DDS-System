@@ -19,7 +19,7 @@ class Instructor::CommentsController < ApplicationController
     @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
     course = Course.find(params[:course_id])
-    @comments = course.comments
+    @comments = course.comments.order(created_at: "DESC")
     @comments_top = "#{course.course_name}のコメント一覧"
   end
 
@@ -28,7 +28,7 @@ class Instructor::CommentsController < ApplicationController
     @schedules = current_instructor.schedules
     @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
-    @comments = current_instructor.comments
+    @comments = current_instructor.comments.order(created_at: "DESC")
     @comments_top = "コメント履歴"
     render :index
   end

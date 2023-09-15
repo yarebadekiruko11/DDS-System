@@ -1,5 +1,6 @@
 class Admin::HomesController < ApplicationController
   before_action :set_beginning_of_week
+  before_action :authenticate_admin!
 
   def top
 

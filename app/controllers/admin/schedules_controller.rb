@@ -1,4 +1,6 @@
 class Admin::SchedulesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
     @schedule = Schedule.new

@@ -15,7 +15,7 @@
 
 <!--指導員ヘッダー-->
   <% if instructor_signed_in? %>
-    <header class="navbar navbar-expand bg-dark-subtle py-4">
+    <header class="navbar navbar-expand bg-dark-subtle py-3 sticky-top">
       <div class="container-fluid justify-content-around">
         <div class="col">
         <%= link_to "#{current_instructor.name}マイページ", courses_path, class:"btn btn-dark btn-sm" %>
@@ -35,34 +35,39 @@
 
     <!--管理者ヘッダー-->
   <% elsif admin_signed_in? %>
-    <header class="navbar navbar-expand bg-dark-subtle py-4">
+    <header class="navbar navbar-expand bg-dark-subtle py-3  sticky-top">
       <div class="container-fluid justify-content-around">
 
         <div class="col-auto">
-          <%= link_to "Top", admin_homes_top_path, class:"btn btn-info me-2" %>
+          <%= link_to "Home", admin_homes_top_path, class:"btn btn-light eme-2 btn-sm" %>
         </div>
+        <div class="col-auto">
+          <%= link_to "新規生徒・指導員登録", admin_courses_path, class:"btn btn-light eme-2 btn-sm" %>
+        </div>
+        <div class="col-auto">
+          <%= link_to "予約登録", new_admin_schedule_path, class:"btn btn-light eme-2 btn-sm" %>
+        </div>
+
+
             <%= form_with url: admin_homes_search_path, local: true, method: :get do |f| %>
         <form class="d-flex align-items-end" role="search">
          <%= f.text_field :keyword, placeholder: "名前検索" %>
          <%= f.select :range, options_for_select([['受講生徒'],['指導員']]) %>
-         <%= f.submit "検索", class: 'btn btn-success mx-2 text-nowrap' %>
+         <%= f.submit "検索", class: 'btn btn-success btn-sm mx-2 text-nowrap' %>
         </form>
     <% end %>
 
         <div class="col-auto">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-secondary"%>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-secondary btn-sm"%>
         </div>
       </div>
     </header>
 
     <!--ログイン前-->
   <% else %>
-    <header class="navbar navbar-expand bg-dark-subtle py-4">
-      <div class="container-fluid justify-content-around">
+    <header class="navbar navbar-expand bg-dark-subtle py-3 sticky-top">
+      <div class="container-fluid">
        <%= link_to "指導員用ログインページへ", instructor_session_path, class:"btn btn-dark text-nowrap" %>
-      <!--</div>-->
-      <!--<div class="container-fluid justify-content-end">-->
-       <%= link_to "管理者用", admin_session_path, class:"btn btn-outline-dark text-nowrap" %>
       </div>
     </header>
   <% end %>
@@ -76,6 +81,14 @@
     <%= yield %>
 
 </div>
+  <footer class="fixed-bottom bg-dark-subtle py-2">
+      <div class="row justify-content-end">
+        <div class="col-2">
+          <%= link_to "管理者用", admin_session_path, class:"btn btn-outline-dark text-nowrap" %>
+        </div>
+      </div>
+  </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </body>
 </html>

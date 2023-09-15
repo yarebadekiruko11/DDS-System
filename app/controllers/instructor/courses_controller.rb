@@ -15,12 +15,16 @@ class Instructor::CoursesController < ApplicationController
   def index
     # 担当一覧表示
     @instructor = current_instructor
-    @courses = @instructor.courses.page(params[:page])
+    @courses = @instructor.courses.page(params[:page]).order(start_time: "DESC")
 
     # 共通レイアウトスケジュール用
     @schedules = current_instructor.schedules
     @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
   end
+  
+  
+  
+  
 
 end
