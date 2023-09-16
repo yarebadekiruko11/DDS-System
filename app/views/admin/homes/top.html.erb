@@ -1,45 +1,6 @@
 <div class="row mt-4">
-   <div class="col-4">
-   <%= link_to "予約登録", new_admin_schedule_path, class: 'btn btn-success btn-sm' %>
-   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary btn-sm" %>
-   <br>
-   <br>
-  <h7><%= l Time.zone.today %>本日の時間割</h7>
-  <br>
-   <table class="table table-sm mt-2" style="font-size: 75%;">
-    <thead class="sticky-top bg-white">
-     <tr>
-      <th scope="col">時限</th>
-      <th scope="col">
-       担当指導員
-       <br>
-       受講生徒/車種
-      </th>
-      <th scope="col"></th>
-     </tr>
-    </thead>
-    <tbody>
 
-     <% @schedules.each do |schedule| %>
-     <tr>
-      <td><%= "#{schedule.class_time}限" %></td>
-      <td>
-       <%= schedule.instructor.name %>
-       <br>
-       <%= schedule.course.course_name %>
-      </td>
-      <td>
-       <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
-       <br>
-       <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      </td>
-     <tr>
-     <% end %>
-    </tbody>
-   </table>
- </div>
-
-  <%#= render 'admin/scheduleindex', schedules: @schedules %>
+  <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
 
 <div class="col">
    <h4>今月入校数<%= @startcourses.count %>件,卒業数<%= @endcourses.count %></h4>

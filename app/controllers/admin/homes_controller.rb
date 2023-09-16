@@ -3,6 +3,7 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
 
   def top
+    @class_day = Time.zone.today
 
     # カレンダー使用コード
     @courses = Course.all
@@ -31,8 +32,8 @@ class Admin::HomesController < ApplicationController
        @keyword = params[:keyword]
 
       @courses = []
+      # .order(start_time: :desc)
       @students.each do |student|
-
         @courses.concat(student.courses)
       end
     else

@@ -16,11 +16,7 @@ before_action :authenticate_admin!
       @graduation_day = params[:graduation_day].to_datetime
       @courses = Course.where(graduation_day: @graduation_day.all_day).page(params[:page])
     end
-
-
   end
-
-
 
   def create
     @course = Course.new(course_params)
@@ -47,7 +43,6 @@ before_action :authenticate_admin!
   end
 
   def search
-
     if params[:car_model] == "standard"
       @courses = Course.where(car_model: 0).page(params[:page])
       @keyword = "普通車"
@@ -58,7 +53,6 @@ before_action :authenticate_admin!
       @courses = Course.where(car_model: 2).page(params[:page])
       @keyword = "その他"
     end
-
   end
 
   private

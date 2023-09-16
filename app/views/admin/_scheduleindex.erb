@@ -1,19 +1,16 @@
  <div class="col-4">
-   <%= link_to "予約登録", new_admin_schedule_path, class: 'btn btn-success' %>
-   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary" %>
+
+   <%= link_to "予約登録", new_admin_schedule_path, class: 'btn btn-success btn-sm' %>
+   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary btn-sm" %>
    <br>
    <br>
-  <h7><%= l Time.zone.today %>本日の時間割</h7>
+  <h7><%= class_day %>の時間割</h7>
   <br>
    <table class="table table-sm mt-2" style="font-size: 75%;">
-    <thead>
+    <thead class="sticky-top">
      <tr>
       <th scope="col">時限</th>
-      <th scope="col">
-       担当指導員
-       <br>
-       受講生徒/車種
-      </th>
+      <th scope="col">担当指導員<br>受講生徒/車種</th>
       <th scope="col"></th>
      </tr>
     </thead>

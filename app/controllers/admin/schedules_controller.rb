@@ -2,6 +2,7 @@ class Admin::SchedulesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
+    @class_day = Time.zone.today
     @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
     @schedule = Schedule.new
   end
@@ -45,7 +46,7 @@ class Admin::SchedulesController < ApplicationController
     @class_day = params[:class_day].to_date
     @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
 
-        # カレンダー使用コード
+    # カレンダー使用コード
     @courses = Course.all
 
     # 各日スケジュール取得コード
