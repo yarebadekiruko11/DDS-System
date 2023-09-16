@@ -8,7 +8,7 @@ class Instructor::CoursesController < ApplicationController
     # コース詳細
     @course = Course.find(params[:id])
     @comment = Comment.new
-    @comments = @course.comments.order(created_at: "DESC").page(params[:page]).per(3)
+    @comments = @course.comments.order(created_at: "DESC").page(params[:page]).per(5)
 
   end
 
@@ -22,9 +22,5 @@ class Instructor::CoursesController < ApplicationController
     @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
 
   end
-  
-  
-  
-  
 
 end

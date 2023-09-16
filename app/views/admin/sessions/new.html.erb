@@ -7,17 +7,17 @@
 
   <%= form_with model: @admin, url: admin_session_path do |f| %>
 
-<div class="row justify-content-center my-4">
-   <div class="col-lg-2">アドレス</div>
-   <div class="col-md-auto">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="row justify-content-center my-4 text-center">
+   <div class="col-2">アドレス</div>
+   <div class="col-4">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
    </div>
 </div>
 
-<div class="row justify-content-center my-4">
-   <div class="col-lg-2">パスワード</div>
-   <div class="col-md-auto">
-    <%= f.password_field :password, autocomplete: "current-password" %>
+<div class="row justify-content-center my-4 text-center">
+   <div class="col-2">パスワード</div>
+   <div class="col-4">
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
    </div>
 </div>
 <div class="row justify-content-center my-4">
