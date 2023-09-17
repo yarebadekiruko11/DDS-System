@@ -1,5 +1,6 @@
-<h1>Admin::Instructors#edit</h1>
-<p>Find me in app/views/admin/instructors/edit.html.erb</p>
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+  <div class="col ms-5">
 
   <div class="row">
     <div class="col-auto mt-5" style="background-color: darkgray;">
@@ -9,8 +10,8 @@
 
 <%= form_with model: @instructor, url: admin_instructor_path do |f| %>
 
-  <div class="row justify-content-start mt-3">
-    <div class="col-3 ml-4">
+  <div class="row justify-content-start mt-4">
+    <div class="col-4 ml-4">
      <p>指導員名</p>
     </div>
     <div class="col-6">
@@ -18,7 +19,7 @@
     </div>
   </div>
   <div class="row justify-content-start mt-3">
-    <div class="col-3 ml-4">
+    <div class="col-4 ml-4">
      <p>メールアドレス</p>
     </div>
     <div class="col-6">
@@ -26,7 +27,7 @@
     </div>
   </div>
   <div class="row justify-content-start mt-3">
-    <div class="col-3 ml-4">
+    <div class="col-4 ml-4">
      <p>在職状況</p>
     </div>
     <div class="col-6">
@@ -36,7 +37,9 @@
   　　<%= f.label :is_deleted, "退職", {value: :true, style: "display: inline-block;"} %>
     </div>
   </div>
-    <div class="actions">
+    <div class="actions mt-3">
     <%= f.submit "編集を保存する", class: 'btn btn-success' %>
   </div>
 <% end %>
+</div>
+</div>

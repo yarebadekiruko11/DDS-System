@@ -40,6 +40,9 @@ before_action :authenticate_admin!
 
   def show
     @course = Course.find(params[:id])
+    @course_id = @course.id
+    @schedules = @course.schedules.order(class_day: "DESC")
+
   end
 
   def search

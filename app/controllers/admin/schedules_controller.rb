@@ -2,9 +2,18 @@ class Admin::SchedulesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
+    if params[:format] == "class_day"
+    @class_day = params[:format].to_date
+    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+    @schedule = Schedule.new
+    # elsif params[:format] ==
+
+
+    else
     @class_day = Time.zone.today
     @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
     @schedule = Schedule.new
+    end
   end
 
   def create
@@ -19,6 +28,10 @@ class Admin::SchedulesController < ApplicationController
 
   def edit
     @schedule = Schedule.find(params[:id])
+    @class_day = @schedule.class_day
+    # @class_day = Time.zone.today
+    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+
   end
 
   def update
@@ -28,7 +41,9 @@ class Admin::SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all.order(class_day: "DESC", class_time: "DESC")
+    @class_day = Time.zone.today
+    @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+    @schedulesall = Schedule.all.order(class_day: "DESC", class_time: "DESC").page(params[:page])
   end
 
   def show
@@ -60,12 +75,13 @@ class Admin::SchedulesController < ApplicationController
     @startcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
     @endcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
 
-
-
-
-
   end
 
+  # def courseindex
+    # @course = Course.find(params[:id])
+    # @schedules = @course.schedules.order(class_day: "DESC")
+    # redirect_to admin_course_path(course.id)
+  # end
 
 
   private
@@ -73,5 +89,9 @@ class Admin::SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:course_id, :class_time, :class_day, :instructor_id)
   end
+
+  # def set_beginning_of_week
+  # Date.beginning_of_week = :sunday
+  # end
 
 end

@@ -2,7 +2,8 @@
 
  <div class="col-3 mt-2">
   <h6 class="d-inline-flex justify-content-start bg-primary p-1 text-dark bg-opacity-25">
-    <%= @course.course_name %>の予約一覧</h6>
+    <%= @course.course_name %>の</h6>
+  <h6 class="d-inline-flex justify-content-end bg-primary p-1 text-dark bg-opacity-25">予約一覧</h6>
 
 <table class="table" style="font-size: 75%;">
     <thead>
@@ -16,7 +17,7 @@
 
      <% @schedules.each do |schedule| %>
      <tr>
-      <td><%= schedule.class_day %></td>
+      <td><%= schedule.class_dayf %></td>
       <td><%= schedule.class_time %></td>
       <td><%= schedule.instructor.name %></td>
      <tr>

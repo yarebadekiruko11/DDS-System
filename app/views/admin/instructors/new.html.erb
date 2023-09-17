@@ -1,9 +1,6 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
-  <div class="col">
-<div>
-   <%= flash[:notice] %>
- </div>
+  <div class="col ms-5">
 
  <% if @instructor.errors.any? %>
   <%= @instructor.errors.count %>
@@ -18,7 +15,7 @@
 <% end %>
 
   <div class="row">
-    <div class="col-auto mt-5" style="background-color: darkgray;">
+    <div class="col-auto mt-5 mb-2" style="background-color: darkgray;">
      <h5>新規指導員登録</h5>
     </div>
   </div>
@@ -26,7 +23,7 @@
 <%= form_with model: @instructor, url: admin_instructors_path, method: :post do |f| %>
 
   <div class="row justify-content-start mt-3">
-    <div class="col-3 ml-4">
+    <div class="col-4 ml-4">
      <p>新規指導員名</p>
     </div>
     <div class="col-6">
@@ -34,7 +31,7 @@
     </div>
   </div>
   <div class="row justify-content-start mt-3">
-    <div class="col-3 ml-4">
+    <div class="col-4 ml-4">
      <p>メールアドレス</p>
     </div>
     <div class="col-6">
@@ -43,7 +40,7 @@
   </div>
 
   <div class="row justify-content-start mt-3">
-   <div class="col-3 ml-4">
+   <div class="col-4 ml-4">
     <p>パスワード
       <% if @minimum_password_length %>
       (<%= @minimum_password_length %> characters minimum)
@@ -56,7 +53,7 @@
   </div>
 
   <div class="row justify-content-start mt-3">
-   <div class="col-3 ml-4">
+   <div class="col-4 ml-4">
     パスワード確認用
    </div>
    <div class="col-6">
@@ -64,7 +61,7 @@
    </div>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-5">
     <%= f.submit "新規登録", class: 'btn btn-success' %>
   </div>
 <% end %>

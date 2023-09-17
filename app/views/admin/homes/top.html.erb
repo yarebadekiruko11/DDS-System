@@ -7,8 +7,9 @@
 
    <%= month_calendar events: @courses do |date, courses| %>
      <%= date.day %>
+     <br>
      <% if @allschedules.where(class_day: date).count > 0 %>
-     <%= link_to " 予約", admin_schedules_dayplan_path(class_day: date) %>
+     <%= link_to "時間割", admin_schedules_dayplan_path(class_day: date) %>
     <% end %>
    <br>
     <% if courses.count > 0 %>

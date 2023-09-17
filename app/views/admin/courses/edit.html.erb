@@ -1,4 +1,6 @@
-
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col">
 <h1>コース編集</h1>
 
 <%= form_with model: @course, url: admin_course_path do |f| %>
@@ -21,7 +23,7 @@
     <p>担当指導員</p>
    </div>
    <div class="col-6">
-    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :name) %>
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :name, @course.instructor_id ) %>
    </div>
   </div>
 
@@ -61,5 +63,6 @@
   </div>
 
 <% end %>
-
+</div>
+</div>
 

@@ -1,4 +1,11 @@
+<div class="row mt-4">
 
+   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
+   <%#= form_with model:  do |f| %>
+   <%#= f.hidden_field :class_day, :value => @class_day %>
+   <%# end %>
+
+<div class="col">
   <div class="row">
     <div class="col-auto mt-5" style="background-color: darkgray;">
      <h5>時間割変更</h5>
@@ -26,14 +33,14 @@
   <div class="row justify-content-start mt-3">
     <div class="col-2">指導員</div>
     <div class="col-3">
-     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name) %>
+     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name, @schedule.instructor_id) %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
     <br>
     <div class="col-2">コース</div>
     <div class="col">
-     <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :course_name) %>
+     <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :course_name, @schedule.course_id) %>
     </div>
   </div>
 <br>
@@ -41,3 +48,5 @@
     <%= f.submit "保存", class: 'btn btn-success' %>
   </div>
 <% end %>
+</div>
+</div>
