@@ -76,16 +76,20 @@
   </table>
 
 
-    <div class="col">
-   <%= link_to "担当・車種・ステータス変更", edit_admin_course_path(@course.id), class: "btn btn-success px-5" %>
-    </div>
-<div class="row justify-content-md-end mt-3">
+  <div class="col">
+   <%= link_to "担当・車種・ステータス変更", edit_admin_course_path(@course.id), class: "btn btn-success btn-sm px-5" %>
+  </div>
+  <div class="col-md-auto mt-3 mb-2">
+   <%= link_to "コース一覧へ", admin_courses_path %>
+  </div>
+  <div class="row justify-content-md-end mt-3">
     <div class="col-lg-auto">
-   <%= link_to "生徒情報変更",edit_admin_student_path(@course.student.id), class: "btn btn-outline-success btn-sm" %>
+      <%= link_to "生徒情報変更",edit_admin_student_path(@course.student.id), class: "btn btn-outline-success btn-sm" %>
     </div>
     <div class="col-lg-auto">
-   <%= link_to "コース追加", admin_student_path(@course.student.id), class: "btn btn-outline-info btn-sm" %>
+      <%= link_to "コース追加", admin_student_path(@course.student.id), class: "btn btn-outline-info btn-sm" %>
     </div>
+
    </div>
  </div>
 </div>

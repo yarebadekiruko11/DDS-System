@@ -6,6 +6,7 @@
    <%# end %>
 
 <div class="col">
+ <h6>予約履歴</h6>
 
 <table class="table" style="font-size: 80%;">
     <thead>
@@ -31,5 +32,7 @@
     </tbody>
    </table>
    <%= paginate @schedulesall %>
+
+ <%= link_to "トップ画面へ", admin_homes_top_path, class: 'btn btn-outline-primary btn-sm mt-2' %>
  </div>
  </div>

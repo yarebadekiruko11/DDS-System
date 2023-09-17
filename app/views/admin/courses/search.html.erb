@@ -1,8 +1,9 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
  <div class="col">
-  <h1><%= @keyword %>の検索結果</h1>
-   <table class="table">
+  <h5><%= @keyword %>/
+  <%= @courses.count %>件</h>
+   <table class="table mt-3" style="font-size: 75%;">
     <thead>
      <tr>
       <th scope="col">生徒名</th>

@@ -52,9 +52,19 @@ before_action :authenticate_admin!
     elsif params[:car_model] == "bike"
       @courses = Course.where(car_model: 1).page(params[:page])
       @keyword = "二輪"
-    else
+    elsif params[:car_model] == "other"
       @courses = Course.where(car_model: 2).page(params[:page])
       @keyword = "その他"
+
+    elsif params[:status] == "enrolled"
+      @courses = Course.where(status: 0).page(params[:page])
+      @keyword = "在籍"
+    elsif params[:status] == "graduation"
+      @courses = Course.where(status: 1).page(params[:page])
+      @keyword = "卒業"
+    else
+      @courses = Course.where(status: 2).page(params[:page])
+      @keyword = "退校"
     end
   end
 

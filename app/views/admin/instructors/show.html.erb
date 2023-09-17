@@ -1,18 +1,22 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
- <div class="col">
-  <h3>指導員詳細</h3>
+ <div class="col ms-2">
+  <h5>指導員詳細</h5>
    <table class="table">
      <tbody>
 
       <tr>
-       <th>No</th>
+       <th class="col-3">No</th>
        <td><%= @instructor.id %></td>
       </tr>
       <tr>
        <th>指導員名</th>
        <td><%= @instructor.name %></td>
       </tr>
+      <!--<tr>-->
+       <!--<th>予約件数</th>-->
+       <!--<td><%#= @instructor.schedules.count %>件</td>-->
+      <!--</tr>-->
       <tr>
        <th>メール</th>
        <td><%= @instructor.email %></td>
@@ -32,10 +36,13 @@
     </tbody>
    </table>
    <%= link_to "編集する", edit_admin_instructor_path(@instructor.id), class: "btn btn-success px-5" %>
-<br>
-<br>
+   <%= link_to "指導員一覧画面へ", admin_instructors_path %>
+
+
+<div class="col mt-5">
    <h5>担当生徒詳細</h5>
-   <table class="table table-sm">
+</div>
+   <table class="table table-sm" style="font-size: 85%;">
   <thead>
     <tr>
       <th scope="col">生徒名</th>

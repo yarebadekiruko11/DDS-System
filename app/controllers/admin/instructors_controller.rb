@@ -19,12 +19,15 @@ class Admin::InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find(params[:id])
-    @instructorcourses = @instructor.courses.page(params[:page]).per(5).order(start_time: "DESC")
+    # @schedules = @instructor.schedules.page(params[:page]).per(8).order(class_day: "DESC")
+
+    @instructorcourses = @instructor.courses.page(params[:page]).per(4).order(start_time: "DESC")
+
   end
 
   def edit
     @instructor = Instructor.find(params[:id])
-    
+
   end
 
   def update

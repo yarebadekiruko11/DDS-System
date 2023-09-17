@@ -15,30 +15,30 @@
 <%= form_with model: @schedule, url: admin_schedule_path(@schedule.id), method: :patch do |f| %>
 
   <div class="row justify-content-start mt-3">
-    <div class="col-2 ml-4">
+    <div class="col ml-4">
      <p>受講日</p>
     </div>
-    <div class="col-3">
+    <div class="col">
     <%= f.date_select :class_day %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
-    <div class="col-2 ml-4">
+    <div class="col ml-4">
      <p>受講時間</p>
     </div>
-    <div class="col-2">
+    <div class="col">
       <%= f.select :class_time, *[1..5] %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
-    <div class="col-2">指導員</div>
-    <div class="col-3">
+    <div class="col">指導員</div>
+    <div class="col">
      <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name, @schedule.instructor_id) %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
     <br>
-    <div class="col-2">コース</div>
+    <div class="col">コース</div>
     <div class="col">
      <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :course_name, @schedule.course_id) %>
     </div>

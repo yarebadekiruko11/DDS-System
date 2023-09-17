@@ -25,6 +25,6 @@
     卒業:<%= link_to @courses.where(graduation_day: date).count, admin_courses_day_index_path(graduation_day: date) %>件
     <% end %>
    <% end %>
-
+   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary btn-sm" %>
  </div>
 </div>
