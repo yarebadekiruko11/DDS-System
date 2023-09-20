@@ -51,11 +51,13 @@ Rails.application.routes.draw do
     get 'courses/search'
     resources :courses, only: [:create, :show, :edit, :index, :update] do
       # コースのスケジュール
-      get ':id/schedules' => 'schedules#courseindex'
+      # get ':id/schedules' => 'schedules#courseindex'
     end
 
     # 指導員登録
+
     resources :instructors
+      get 'instructors/:id/schedules' => 'schedules#instructorschedule'
 
     # スケジュール
     get 'schedules/dayplan'

@@ -6,8 +6,10 @@ class Course < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
-# enum定義
 
+
+
+# enum定義
 # 在籍ステータス
  enum status: { enrolled: 0, graduation: 1, leaving: 2 }
 # 車種

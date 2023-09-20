@@ -1,11 +1,8 @@
  <div class="col-4">
 
-   <%= link_to "#{class_day.strftime('%m/%d')}の予約登録", new_admin_schedule_path(params[:class_day]), class: 'btn btn-success btn-sm' %>
+   <%= link_to "#{class_day.strftime('%m/%d')}新規予約", new_admin_schedule_path(params[:class_day]), class: 'btn btn-primary btn-sm' %>
    <br>
-
-   <br>
-   <br>
-  <h7><%= class_day %>の時間割</h7>
+   <h7 class="row d-inline-flex ms-1 mt-2 px-1" style="background-color: lightgray;"><%= class_day.strftime('%m/%d') %>の時間割</h7>
   <%= form_with do |f| %>
   <% end %>
 

@@ -9,17 +9,20 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def create
-    instructor = Instructor.new(instructor_params)
-    if instructor.save
-    redirect_to admin_instructor_path(instructor.id)
+    @instructor = Instructor.new(instructor_params)
+    if @instructor.save
+      flash.now[:notice] = "登録しました"
+     redirect_to admin_instructor_path(@instructor.id)
     else
-    render :new
+      flash.now[:notice] = "入力してください"
+     render :new
     end
+
   end
 
   def show
     @instructor = Instructor.find(params[:id])
-    # @schedules = @instructor.schedules.page(params[:page]).per(8).order(class_day: "DESC")
+    @schedules = @instructor.schedules.page(params[:page]).per(8).order(class_day: "DESC")
 
     @instructorcourses = @instructor.courses.page(params[:page]).per(4).order(start_time: "DESC")
 
@@ -35,6 +38,10 @@ class Admin::InstructorsController < ApplicationController
     instructor.update(instructor_params)
     redirect_to admin_instructor_path(instructor.id)
   end
+
+
+
+
 
   private
 

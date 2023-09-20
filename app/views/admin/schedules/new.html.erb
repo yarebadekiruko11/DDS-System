@@ -38,14 +38,14 @@
   <div class="row justify-content-start mt-3">
     <div class="col-2">指導員</div>
     <div class="col">
-     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :name) %>
+     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :name) %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
     <br>
     <div class="col-2">コース</div>
     <div class="col">
-     <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :course_name) %>
+     <%= f.select :course_id, options_from_collection_for_select(Course.where(status: 0), :id, :course_name) %>
     </div>
   </div>
 <br>
@@ -53,5 +53,6 @@
     <%= f.submit "新規登録", class: 'btn btn-success' %>
   </div>
 <% end %>
+<%= link_to "topへ", admin_homes_top_path %>
 </div>
 </div>

@@ -14,6 +14,10 @@ class Instructor < ApplicationRecord
     where("name LIKE ?", "%#{keyword}%")
   end
 
+# バリデーション
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 
 
 

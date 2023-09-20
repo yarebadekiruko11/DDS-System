@@ -78,11 +78,10 @@ class Admin::SchedulesController < ApplicationController
 
   end
 
-  # def courseindex
-    # @course = Course.find(params[:id])
-    # @schedules = @course.schedules.order(class_day: "DESC")
-    # redirect_to admin_course_path(course.id)
-  # end
+  def instructorschedule
+    @instructor = Instructor.find(params[:id])
+    @schedules = @instructor.schedules.order(class_day: "DESC").page(params[:page])
+  end
 
 
   private
@@ -91,8 +90,9 @@ class Admin::SchedulesController < ApplicationController
     params.require(:schedule).permit(:course_id, :class_time, :class_day, :instructor_id)
   end
 
-  # def set_beginning_of_week
-  # Date.beginning_of_week = :sunday
-  # end
+# 日曜始まり
+  def set_beginning_of_week
+   Date.beginning_of_week = :sunday
+  end
 
 end

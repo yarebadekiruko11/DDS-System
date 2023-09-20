@@ -13,6 +13,7 @@ class Admin::StudentsController < ApplicationController
     if @student.save
       redirect_to admin_student_path(@student.id)
     else
+      flash.now[:notice] = "入力されていない項目があります"
       render :new
     end
   end

@@ -3,8 +3,37 @@
   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
 
 <div class="col">
-    <%= @schedule.class_day %>
-    <%= @schedule.class_time %>
-    <%= @schedule.course.course_name %>
-    <%= @schedule.instructor.name %>
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5><%= @class_day %>の予約一覧</h5>
+    </div>
+  </div>
+<table class="table" style="font-size: 80%;">
+    <thead>
+     <tr>
+      <th scope="col-1">時限</th>
+      <th scope="col-3">指導員</th>
+      <th scope="col-5">受講生徒/車種</th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <% @schedules.each do |schedule| %>
+     <tr>
+      <td><%= "#{schedule.class_time}限目" %></td>
+      <td><%= link_to schedule.instructor.name, admin_instructor_path(schedule.instructor.id) %></td>
+      <td><%= link_to schedule.course.course_name,admin_course_path(schedule.course.id) %></td>
+      <td>
+       <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
+       <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </td>
+     <tr>
+     <% end %>
+    </tbody>
+   </table>
+   <%#= paginate @schedules %>
+
+ <%= link_to "予約登録へ", new_admin_schedule_path, class: 'btn btn-primary btn-sm' %>
+ <%= link_to "topへ", admin_homes_top_path %>
+ </div>
 </div>

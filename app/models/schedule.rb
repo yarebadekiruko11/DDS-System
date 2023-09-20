@@ -13,5 +13,23 @@ class Schedule < ApplicationRecord
     class_day.strftime('%m/%d')
   end
 
+  # def validate(record)
+    # if class_day < Time.zone.today
+      # flash.now[:notise] = "今日以降の日付を選択してください"
+    # elsif Schedule.where(:class_dayが同じかつ:class_timeが同じ, :instructor_idも同じ).present?
+      # flash.now[:notice] = "別の指導員を選択してください"
+    # elsif Schedule.where(:class_dayが同じかつ:class_timeが同じ, :course.student_idも同じ).present?
+      # flash.now[:notice] = "別の生徒を選択してください"
+    # else
+      # schedule.save
+      # flash.now[:notice] = "予約できました"
+    # end
+    
+  # end
+
+
+
+
+
 
 end

@@ -1,26 +1,24 @@
 <div class="row mt-4">
 
-   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
-   <%#= form_with model:  do |f| %>
-   <%#= f.hidden_field :class_day, :value => @class_day %>
-   <%# end %>
+  <%= render 'admin/search' %>
 
 <div class="col">
- <h6>予約履歴</h6>
-
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5><%= @instructor.name %>の予約一覧</h5>
+    </div>
+  </div>
 <table class="table" style="font-size: 80%;">
     <thead>
      <tr>
       <th scope="col-2">受講日</th>
       <th scope="col-1">時限</th>
       <th scope="col-5">受講生徒/車種</th>
-      <th scope="col-2">担当指導員</th>
-      <th scope="col-2"></th>
      </tr>
     </thead>
     <tbody>
 
-     <% @schedulesall.each do |schedule| %>
+     <% @schedules.each do |schedule| %>
      <tr>
       <td><%= schedule.class_dayf %></td>
       <td><%= "#{schedule.class_time}限目" %></td>
@@ -31,8 +29,8 @@
      <% end %>
     </tbody>
    </table>
-   <%= paginate @schedulesall %>
+   <%= paginate @schedules %>
 
- <%= link_to "トップ画面へ", admin_homes_top_path %>
+ <%= link_to "#{@instructor.name}詳細へ戻る", admin_instructor_path(@instructor.id) %>
  </div>
- </div>
+</div>

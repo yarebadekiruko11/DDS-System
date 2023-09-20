@@ -13,10 +13,10 @@
        <th>指導員名</th>
        <td><%= @instructor.name %></td>
       </tr>
-      <!--<tr>-->
-       <!--<th>予約件数</th>-->
-       <!--<td><%#= @instructor.schedules.count %>件</td>-->
-      <!--</tr>-->
+      <tr>
+       <th>予約件数</th>
+       <td><%= link_to @instructor.schedules.count, admin_path(@instructor.id) %>件</td>
+      </tr>
       <tr>
        <th>メール</th>
        <td><%= @instructor.email %></td>

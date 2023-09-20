@@ -45,9 +45,10 @@ class Admin::HomesController < ApplicationController
 
   private
 
-  # def set_beginning_of_week
-  # Date.beginning_of_week = :sunday
-  # end
+  # 日曜始まり
+  def set_beginning_of_week
+   Date.beginning_of_week = :sunday
+  end
 
 
 end
