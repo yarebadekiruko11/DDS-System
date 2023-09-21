@@ -1,14 +1,45 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
-
   <div class="col">
-<h1>コース新規登録</h1>
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>コース新規登録</h5>
+    </div>
+  </div>
 
 <%= form_with model: @course, url: admin_courses_path, method: :post do |f| %>
 
-<%= @student.name %>
-<%= f.hidden_field :student_id, :value => @student.id %>
-<%= @student.birthday %>
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生徒名</p>
+    </div>
+   <div class="col-6"><%= @student.name %></div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生年月日</p>
+    </div>
+   <div class="col-6">
+     <%= f.hidden_field :student_id, :value => @student.id %>
+     <%= @student.birthday %>
+   </div>
+   </div>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>住所</p>
+    </div>
+    <div class="col-6"><%= @student.address %></div>
+   </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>電話番号</p>
+    </div>
+   <div class="col-6"><%= @student.phone %></div>
+   </div>
 
   <div class="row justify-content-start mt-3">
    <div class="col-3 ml-4">

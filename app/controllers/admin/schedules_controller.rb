@@ -2,19 +2,41 @@ class Admin::SchedulesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
+
     if params[:format].present?
-    @class_day = params[:format].to_date
-    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
-    @schedule = Schedule.new
+     @class_day = params[:format].to_date
+     @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+     @schedule = Schedule.new
+    elsif params[:class_day].present?
+     @class_day = params[:class_day]
+     @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+     @schedule = Schedule.new
     else
-    @class_day = Time.zone.today
-    @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
-    @schedule = Schedule.new
+     @class_day = Time.zone.today
+     @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+     @schedule = Schedule.new
     end
   end
 
   def create
     schedule = Schedule.new(schedule_params)
+
+    if schedule.class_day < Time.zone.today
+      flash[:notise] = "明日以降の日付を選択してください"
+      redirect_to new_admin_schedule_path(schedule.class_day)
+      return
+    end
+    if Schedule.where(class_day: schedule.class_day, class_time: schedule.class_time, instructor_id: schedule.instructor_id).exists?
+      flash[:notise] = "別の指導員を選択してください"
+      redirect_to new_admin_schedule_path(schedule.class_day)
+      return
+    end
+    if Schedule.where(class_day: schedule.class_day, class_time: schedule.class_time, course_id: schedule.course_id).exists?
+      flash[:notise] = "別のコースを選択してください"
+      redirect_to new_admin_schedule_path(schedule.class_day)
+      return
+    end
+
     if schedule.save
       redirect_to admin_schedule_path(schedule.id)
     else
