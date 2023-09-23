@@ -2,14 +2,14 @@
   <%= render 'admin/search' %>
  <div class="col">
 
- <%# if @student.errors.any? %>
-  <!--<%#= @student.errors.count %>件のエラーが発生しました-->
-  <!--<ul>-->
-    <%# @student.errors.full_messages.each do |message| %>
-      <!--<li><%#= message %></li>-->
-    <%# end %>
-  <!--</ul>-->
-<%# end %>
+ <% if @student.errors.any? %>
+  <%= @student.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @student.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
   <div class="row">
     <div class="col-auto mt-5" style="background-color: darkgray;">

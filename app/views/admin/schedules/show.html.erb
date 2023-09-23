@@ -13,7 +13,8 @@
      <tr>
       <th scope="col-1">時限</th>
       <th scope="col-3">指導員</th>
-      <th scope="col-5">受講生徒/車種</th>
+      <th scope="col">受講生徒/車種</th>
+      <th scope="col-2">入校日</th>
      </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
       <td><%= "#{schedule.class_time}限目" %></td>
       <td><%= link_to schedule.instructor.name, admin_instructor_path(schedule.instructor.id) %></td>
       <td><%= link_to schedule.course.course_name,admin_course_path(schedule.course.id) %></td>
+      <td><%= l schedule.course.start_time %></td>
       <td>
        <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
        <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

@@ -49,10 +49,10 @@ Rails.application.routes.draw do
     # コース登録
     get 'courses/day_index' => 'courses#day_index'
     get 'courses/search'
-    resources :courses, only: [:create, :show, :edit, :index, :update] do
+    resources :courses, only: [:create, :show, :edit, :index, :update]
       # コースのスケジュール
       # get ':id/schedules' => 'schedules#courseindex'
-    end
+
 
     # 指導員登録
 

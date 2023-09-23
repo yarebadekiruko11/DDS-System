@@ -2,13 +2,13 @@ class Admin::SchedulesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
-
+# byebug
     if params[:format].present?
      @class_day = params[:format].to_date
      @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
      @schedule = Schedule.new
     elsif params[:class_day].present?
-     @class_day = params[:class_day]
+     @class_day = params[:class_day].to_date
      @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
      @schedule = Schedule.new
     else

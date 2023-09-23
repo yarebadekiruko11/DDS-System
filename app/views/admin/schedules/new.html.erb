@@ -17,10 +17,20 @@
     </div>
   </div>
 
-<%#= form_with model: @schedule, url: new_admin_schedule_path, method: :get do |f| %>
-  <%#= f.date_select :class_day %>
-  <%#= f.submit "予約表示" %>
-<%# end %>
+    <%= form_with url: new_admin_schedule_path, local: true, method: :get do |f| %>
+  <div class="row justify-content-start mt-3">
+     <div class="col-2 ml-4">
+      <p>予約希望日</p>
+     </div>
+     <div class="col">
+        <%= f.date_field :class_day %>
+
+        <div class="d-inline-flex">
+        <%= f.submit "表示", class: 'btn btn-secondary mx-2 text-nowrap btn-sm' %>
+        </div>
+     </div>
+    <% end %>
+  </div>
 
 <%= form_with model: @schedule, url: admin_schedules_path, method: :post do |f| %>
 

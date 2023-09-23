@@ -1,19 +1,19 @@
 class Admin::CoursesController < ApplicationController
 before_action :authenticate_admin!
   def index
-    @courses = Course.page(params[:page])
+    @courses = Course.page(params[:page]).order(start_time: "DESC")
   end
 
   def day_index
     if params[:start_time]
-    # 文字列で送られたパラメータをdatetimeクラスに変換
-    @start_time = params[:start_time].to_datetime
+    # 文字列で送られたパラメータをdateクラスに変換
+    @start_time = params[:start_time].to_date
 
     # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
     @courses = Course.where(start_time: @start_time.all_day).page(params[:page])
     # @courses = Course.where(start_time: params[:id])
     else
-      @graduation_day = params[:graduation_day].to_datetime
+      @graduation_day = params[:graduation_day].to_date
       @courses = Course.where(graduation_day: @graduation_day.all_day).page(params[:page])
     end
   end

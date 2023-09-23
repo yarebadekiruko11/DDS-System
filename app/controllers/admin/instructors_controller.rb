@@ -34,9 +34,17 @@ class Admin::InstructorsController < ApplicationController
   end
 
   def update
-    instructor = Instructor.find(params[:id])
-    instructor.update(instructor_params)
-    redirect_to admin_instructor_path(instructor.id)
+
+    @instructor = Instructor.find(params[:id])
+
+    if @instructor.update(instructor_params)
+     redirect_to admin_instructor_path(instructor.id)
+    else
+      flash.now[:notice] = "入力してください"
+
+    render :edit
+    end
+
   end
 
 
