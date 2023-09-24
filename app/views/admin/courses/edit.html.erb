@@ -1,12 +1,39 @@
 <div class="row mt-4">
   <%= render 'admin/search' %>
  <div class="col">
-<h1>コース編集</h1>
+<h6 class="d-inline-flex justify-content-end bg-primary p-1 text-dark bg-opacity-25">コース編集</h6>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生徒名</p>
+    </div>
+   <div class="col-6"><%= @course.student.name %></div>
+  </div>
+
+  <div class="row justify-content-start mt-1">
+   <div class="col-3 ml-4">
+    <p>生年月日</p>
+    </div>
+   <div class="col-6">
+     <%= @course.student.birthday %>
+   </div>
+   </div>
+
+  <div class="row justify-content-start mt-1">
+    <div class="col-3 ml-4">
+     <p>住所</p>
+    </div>
+    <div class="col-6"><%= @course.student.address %></div>
+   </div>
+
+  <div class="row justify-content-start mt-1">
+   <div class="col-3 ml-4">
+    <p>電話番号</p>
+    </div>
+   <div class="col-6"><%= @course.student.phone %></div>
+   </div>
 
 <%= form_with model: @course, url: admin_course_path do |f| %>
-
-<%= @course.student.name %>
-
 
   <div class="row justify-content-start mt-3">
    <div class="col-3 ml-4">
@@ -18,7 +45,7 @@
    </div>
   </div>
 
-  <div class="row justify-content-start mt-3">
+  <div class="row justify-content-start mt-2">
    <div class="col-3 ml-4">
     <p>担当指導員</p>
    </div>
@@ -28,7 +55,7 @@
   </div>
 
 
-  <div class="row justify-content-start mt-3">
+  <div class="row justify-content-start mt-2">
    <div class="col-3 ml-4">
     <p>入校日</p>
    </div>
@@ -36,7 +63,7 @@
     <%= f.date_field :start_time %>
    </div>
    </div>
-  <div class="row justify-content-start mt-3">
+  <div class="row justify-content-start mt-2">
    <div class="col-3 ml-4">
     <p>卒業日</p>
    </div>
@@ -45,7 +72,7 @@
    </div>
    </div>
 
-  <div class="row justify-content-start mt-3">
+  <div class="row justify-content-start mt-2">
    <div class="col-3 ml-4">
     <p>ステータス</p>
    </div>

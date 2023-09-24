@@ -35,14 +35,15 @@ class Admin::InstructorsController < ApplicationController
 
   def update
 
-    @instructor = Instructor.find(params[:id])
+    instructor = Instructor.find(params[:id])
 
-    if @instructor.update(instructor_params)
+    if instructor.update(instructor_params)
      redirect_to admin_instructor_path(instructor.id)
     else
+      #byebug
       flash.now[:notice] = "入力してください"
 
-    render :edit
+      render :edit
     end
 
   end
@@ -56,7 +57,6 @@ class Admin::InstructorsController < ApplicationController
   def instructor_params
     params.require(:instructor).permit(:name, :password, :password_confirmation, :email, :is_deleted)
   end
-
 
 
 end
