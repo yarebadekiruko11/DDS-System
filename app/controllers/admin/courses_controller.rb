@@ -20,10 +20,12 @@ before_action :authenticate_admin!
 
   def create
     @course = Course.new(course_params)
-    if @course.save!
+    if @course.save
       redirect_to admin_course_path(@course.id)
     else
-      render :new
+      flash[:notise] = "入力漏れがあります"
+      @student = @course.student
+      redirect_to admin_student_path(@student.id)
     end
   end
 
@@ -33,9 +35,13 @@ before_action :authenticate_admin!
 
   def update
     # graduation_at = params[:graduation_at].to_datetime
-    course = Course.find(params[:id])
-    course.update(course_params)
-    redirect_to admin_course_path(course.id)
+    @course = Course.find(params[:id])
+    if @course.update(course_params)
+     redirect_to admin_course_path(@course.id)
+    else
+     flash[:notise] = "入力漏れがあります"
+     render :edit
+    end
   end
 
   def show

@@ -27,7 +27,11 @@ class Schedule < ApplicationRecord
 
   # end
 
-
+def class_day_validate
+ if class_day.presence? && class_day <= Time.zone.today
+   errors.add(:class_day, "明日以降の日付を登録してください")
+ end
+end
 
 
 

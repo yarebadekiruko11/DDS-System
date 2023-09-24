@@ -1,7 +1,7 @@
 class Admin::StudentsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @students = Student.all
+    @students = Student.page(params[:page])
   end
 
   def new
@@ -28,9 +28,13 @@ class Admin::StudentsController < ApplicationController
   end
 
   def update
-    student = Student.find(params[:id])
-    student.update(student_params)
-    redirect_to admin_students_path
+    @student = Student.find(params[:id])
+    if @student.update(student_params)
+      redirect_to admin_students_path(@student.id)
+    else
+      flash.now[:notice] = "入力されていない項目があります"
+      render :edit
+    end
   end
 
   private

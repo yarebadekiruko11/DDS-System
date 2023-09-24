@@ -48,15 +48,22 @@ class Admin::SchedulesController < ApplicationController
   def edit
     @schedule = Schedule.find(params[:id])
     @class_day = @schedule.class_day
-    # @class_day = Time.zone.today
     @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
 
   end
 
   def update
-    schedule = Schedule.find(params[:id])
-    schedule.update(schedule_params)
-    redirect_to admin_schedule_path(schedule.id)
+      @schedule = Schedule.find(params[:id])
+    # class_day_validate
+
+
+    if @schedule.update(schedule_params)
+      redirect_to admin_schedule_path(@schedule.id)
+    else
+      # @class_day = @schedule.class_day
+      # @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
+      render :edit
+    end
   end
 
   def index

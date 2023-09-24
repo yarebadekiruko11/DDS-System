@@ -6,6 +6,12 @@ class Course < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
+validates :student_id, presence: true
+validates :start_time, presence: true
+validates :car_model, presence: true
+validates :status, presence: true
+validates :instructor, presence: true
+
 
 
 
@@ -26,6 +32,10 @@ class Course < ApplicationRecord
 
  def self.search()
   where("car_model LIKE ?", "#{keyword}")
+ end
+
+ def start_time_day
+  start_time.strftime('%m/%d')
  end
 
 
