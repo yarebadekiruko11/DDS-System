@@ -51,7 +51,7 @@
      <p>生年月日</p>
     </div>
     <div class="col-6">
-    <%= f.text_field :birthday %>
+    <%= f.date_field :birthday %>
     </div>
   </div>
 
@@ -74,7 +74,7 @@
   </div>
 
   <div class="row justify-content-start mt-3">
-   <div class="col-3 ml-4"></div>
+   <div class="col-3 ml-4"><%= link_to "生徒一覧に戻る", admin_students_path %></div>
    <div class="d-grid gap-2 col-6">
     <%= f.submit "情報保存", class: 'btn btn-success px-5' %>
 

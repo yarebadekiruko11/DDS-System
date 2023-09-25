@@ -17,6 +17,12 @@ class Student < ApplicationRecord
  def kana
   last_name_kana + first_name_kana
  end
+ def birthday_wareki
+  birthday.jisx0301
+ end
+
+
+
 
  def self.search(keyword)
   Student.where("last_name LIKE ? OR first_name LIKE ? OR first_name_kana LIKE ? OR last_name_kana LIKE ? ", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")

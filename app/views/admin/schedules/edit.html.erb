@@ -1,9 +1,6 @@
 <div class="row mt-4">
 
    <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
-   <%#= form_with model:  do |f| %>
-   <%#= f.hidden_field :class_day, :value => @class_day %>
-   <%# end %>
 
 <div class="col">
   <div class="row">
@@ -19,7 +16,7 @@
      <p>受講日</p>
     </div>
     <div class="col">
-    <%= f.date_select :class_day %>
+    <%= f.date_field :class_day, min: Time.zone.tomorrow %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">

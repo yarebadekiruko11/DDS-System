@@ -26,8 +26,9 @@
       <td><%= "#{schedule.class_time}限目" %></td>
       <td><%= link_to schedule.course.course_name,admin_course_path(schedule.course.id) %></td>
       <td><%= schedule.instructor.name %></td>
-      <% if schedule.class_day >= Time.zone.today %>
-      <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %></td>
+      <% if schedule.class_day > Time.zone.today %>
+      <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %> /
+           <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       <% end %>
      <tr>
      <% end %>

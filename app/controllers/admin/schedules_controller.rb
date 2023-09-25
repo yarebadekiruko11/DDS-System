@@ -2,7 +2,7 @@ class Admin::SchedulesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
-# byebug
+
     if params[:format].present?
      @class_day = params[:format].to_date
      @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
@@ -21,13 +21,15 @@ class Admin::SchedulesController < ApplicationController
   def create
     schedule = Schedule.new(schedule_params)
 
+if schedule.class_day.present?
+
     if schedule.class_day <= Time.zone.today
       flash[:notise] = "明日以降の日付を選択してください"
       redirect_to new_admin_schedule_path(schedule.class_day)
       return
     end
     if Schedule.where(class_day: schedule.class_day, class_time: schedule.class_time, instructor_id: schedule.instructor_id).exists?
-      flash[:notise] = "別の指導員を選択してください"
+      flash[:notise] = "別の指導員または別の時限を選択してください"
       redirect_to new_admin_schedule_path(schedule.class_day)
       return
     end
@@ -43,6 +45,12 @@ class Admin::SchedulesController < ApplicationController
       render new_admin_schedule_path
     end
 
+else
+  flash[:notise] = "予約日を選択してください"
+  redirect_to new_admin_schedule_path(schedule.class_day)
+  return
+end
+
   end
 
   def edit
@@ -54,14 +62,28 @@ class Admin::SchedulesController < ApplicationController
 
   def update
       @schedule = Schedule.find(params[:id])
-    # class_day_validate
+# データ比較のため仮保存
+      @schedule.assign_attributes(schedule_params)
 
+    if @schedule.class_day <= Time.zone.today
+      flash[:notise] = "明日以降の日付を選択してください"
+      redirect_to edit_admin_schedule_path(@schedule.id)
+      return
+    end
+    if Schedule.where(class_day: @schedule.class_day, class_time: @schedule.class_time, instructor_id: @schedule.instructor_id).exists?
+      flash[:notise] = "別の指導員または別の時限を選択してください"
+      redirect_to edit_admin_schedule_path(@schedule.id)
+      return
+    end
+    if Schedule.where(class_day: @schedule.class_day, class_time: @schedule.class_time, course_id: @schedule.course_id).exists?
+      flash[:notise] = "別のコースを選択してください"
+      redirect_to edit_admin_schedule_path(@schedule.id)
+      return
+    end
 
-    if @schedule.update(schedule_params)
+    if @schedule.save
       redirect_to admin_schedule_path(@schedule.id)
     else
-      # @class_day = @schedule.class_day
-      # @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
       render :edit
     end
   end
@@ -75,9 +97,7 @@ class Admin::SchedulesController < ApplicationController
   def show
     @schedule = Schedule.find(params[:id])
     @class_day = @schedule.class_day
-    # @class_day = Time.zone.today
-    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC")
-
+    @schedules = Schedule.where(class_day: @class_day.all_day).order(class_time: "ASC").page(params[:page])
   end
 
   def destroy

@@ -18,7 +18,7 @@
      </tr>
     </thead>
 
-    <% if @class_day >= Time.zone.today %>
+  <% if @class_day > Time.zone.today %>
     <tbody>
      <% @schedules.each do |schedule| %>
      <tr>
@@ -34,7 +34,7 @@
      <% end %>
     </tbody>
 
-    <% else %>
+  <% else %>
         <tbody>
      <% @schedules.each do |schedule| %>
      <tr>
@@ -42,20 +42,13 @@
       <td><%= link_to schedule.instructor.name, admin_instructor_path(schedule.instructor.id) %></td>
       <td><%= link_to schedule.course.course_name,admin_course_path(schedule.course.id) %></td>
       <td><%= l schedule.course.start_time %></td>
-      <!--<td>-->
-       <%#= link_to "変更", edit_admin_schedule_path(schedule.id) %>
-       <%#= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <!--</td>-->
      <tr>
      <% end %>
     </tbody>
 
-    <% end %>
-
-
-
+  <% end %>
    </table>
-   <%#= paginate @schedules %>
+   <%= paginate @schedules %>
 
  <%= link_to "予約登録へ", new_admin_schedule_path, class: 'btn btn-primary btn-sm' %>
  <%= link_to "topへ", admin_homes_top_path %>
