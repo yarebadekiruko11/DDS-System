@@ -55,7 +55,7 @@
     <p>担当指導員</p>
    </div>
    <div class="col-6">
-    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all.where(is_deleted: false), :id, :name) %>
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all.where(is_deleted: false), :id, :id_name) %>
    </div>
   </div>
 

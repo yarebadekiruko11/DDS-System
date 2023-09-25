@@ -17,7 +17,10 @@ class Instructor < ApplicationRecord
 # バリデーション
   validates :name, presence: true
   validates :email, presence: true
-#  validates :password, presence: true
+
+  def id_name
+   "#{id}" + ":" + "#{name}"
+  end
 
 
 

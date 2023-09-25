@@ -36,8 +36,11 @@ class Admin::HomesController < ApplicationController
       @students.each do |student|
         @courses.concat(student.courses)
       end
+
+      @courses = Course.page(params[:page])
+
     else
-       @instructors = Instructor.search(params[:keyword])
+       @instructors = Instructor.search(params[:keyword]).page(params[:page]).per(4)
        @keyword = params[:keyword]
     end
 

@@ -29,13 +29,19 @@
 
 
  <div class="col">
-  <h3>コース詳細</h3>
+  <div class="col-auto mt-5 mb-2" style="background-color: darkgray;">
+   <h5>コース詳細</h5>
+  </div>
 
   <table class="table">
    <tbody>
     <tr>
-     <th>受講生徒名</th>
-     <td><%= @course.student.name %></td>
+     <th class="col-3">受講生徒名</th>
+     <td class="col-5"><%= @course.student.name %></td>
+    </tr>
+    <tr>
+     <th>生年月日</th>
+     <td><%= @course.student.birthday_wareki %></td>
     </tr>
     <tr>
      <th>住所</th>

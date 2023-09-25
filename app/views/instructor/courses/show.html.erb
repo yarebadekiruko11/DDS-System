@@ -9,7 +9,7 @@
      <th>受講生徒名</th>
       <td><%= @course.student.name %></td>
      <th>生年月日</th>
-      <td><%= @course.student.birthday %></td>
+      <td><%= @course.student.birthday.jisx0301 %></td>
     </tr>
     <tr>
      <th>電話番号</th>

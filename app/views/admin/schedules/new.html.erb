@@ -46,7 +46,7 @@
   <div class="row justify-content-start mt-3">
     <div class="col-2">指導員</div>
     <div class="col">
-     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :name) %>
+     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :id_name) %>
     </div>
   </div>
   <div class="row justify-content-start mt-3">
