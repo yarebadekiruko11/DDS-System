@@ -1,7 +1,7 @@
 class Admin::InstructorsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.page(params[:page])
   end
 
   def new

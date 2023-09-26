@@ -40,7 +40,7 @@ class Admin::HomesController < ApplicationController
       @courses = Course.page(params[:page])
 
     else
-       @instructors = Instructor.search(params[:keyword]).page(params[:page]).per(4)
+       @instructors = Instructor.search(params[:keyword]).page(params[:page])
        @keyword = params[:keyword]
     end
 

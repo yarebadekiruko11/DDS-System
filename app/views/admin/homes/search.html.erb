@@ -28,6 +28,9 @@
       <% end %>
     </tbody>
    </table>
+  <%= paginate @courses %>
+
+
   <% else %>
  <table class="table">
     <thead>
@@ -55,6 +58,7 @@
       <% end %>
     </tbody>
    </table>
+   <%= paginate @instructors %>
 <% end %>
 </div>
 </div>
