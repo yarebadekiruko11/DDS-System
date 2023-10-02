@@ -22,9 +22,4 @@ class Instructor < ApplicationRecord
    "#{id}" + ":" + "#{name}"
   end
 
-
-
-
-
-
 end

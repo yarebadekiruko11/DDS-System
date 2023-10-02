@@ -1,6 +1,6 @@
  <div class="col-3 mt-2">
-  <h6 class="d-inline-flex justify-content-start bg-primary p-1 text-dark bg-opacity-25">
-   <%= "#{ Time.zone.today.strftime('%m/%d')}の予定" %></h6>
+   <h6 class="d-inline-flex justify-content-start bg-primary p-1 text-dark bg-opacity-25">
+     <%= "#{ Time.zone.today.strftime('%m/%d')}の予定" %></h6>
    <table class="table" style="font-size: 75%;">
     <thead>
      <tr>
@@ -9,14 +9,14 @@
      </tr>
     </thead>
     <tbody>
-  <% today_schedules.each do |schedule| %>
-  <tr>
-   <td><%= schedule.class_time %></td>
-   <td><%= schedule.course.course_name %></td>
-   <td><% course = schedule.course %>
-    <%= link_to "詳細", course_path(course.id) %>
-  </tr>
-  <% end %>
-  </tbody>
-  </table>
+       <% today_schedules.each do |schedule| %>
+     <tr>
+      <td><%= schedule.class_time %></td>
+      <td><%= schedule.course.course_name %></td>
+      <td><% course = schedule.course %>
+       <%= link_to "詳細", course_path(course.id) %>
+     </tr>
+       <% end %>
+    </tbody>
+   </table>
  </div>

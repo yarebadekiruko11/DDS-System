@@ -40,17 +40,11 @@ class Admin::InstructorsController < ApplicationController
     if instructor.update(instructor_params)
      redirect_to admin_instructor_path(instructor.id)
     else
-      #byebug
       flash.now[:notice] = "入力してください"
-
       render :edit
     end
 
   end
-
-
-
-
 
   private
 

@@ -5,7 +5,7 @@
     <%= @course.course_name %>の</h6>
   <h6 class="d-inline-flex justify-content-end bg-primary p-1 text-dark bg-opacity-25">予約一覧</h6>
 
-<table class="table" style="font-size: 75%;">
+  <table class="table" style="font-size: 75%;">
     <thead>
      <tr>
       <th scope="col">受講日</th>
@@ -24,7 +24,7 @@
      <% end %>
     </tbody>
    </table>
-  </div>
+ </div>
  <div class="col-9 mt-2">
 
   <h7 class="d-inline-flex justify-content-start bg-success p-1 text-dark bg-opacity-50">受講者情報</h7>
@@ -79,9 +79,9 @@
   </div>
   <% end %>
 
-<h7 class="d-inline-flex justify-content-start bg-info p-1 text-dark bg-opacity-25">
+  <h7 class="d-inline-flex justify-content-start bg-info p-1 text-dark bg-opacity-25">
    新着順コメント(<%= @course.comments.count %>件)
-   </h7>
+  </h7>
    <%= link_to "全件表示", course_comments_path(@course.id), class:"btn btn-outline-info btn-sm" %>
 
   <table class="table" style="font-size: 75%;">
@@ -104,7 +104,5 @@
   </table>
    <%= paginate @comments %>
 
-
-
-</div>
+ </div>
 </div>

@@ -2,13 +2,13 @@
 
   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
 
-<div class="col">
+ <div class="col">
   <div class="row">
     <div class="col-auto mt-5" style="background-color: darkgray;">
      <h5><%= @class_day %>の予約一覧</h5>
     </div>
   </div>
-<table class="table" style="font-size: 80%;">
+  <table class="table" style="font-size: 80%;">
     <thead>
      <tr>
       <th scope="col-1">時限</th>
@@ -35,7 +35,7 @@
     </tbody>
 
   <% else %>
-        <tbody>
+    <tbody>
      <% @schedules.each do |schedule| %>
      <tr>
       <td><%= "#{schedule.class_time}限目" %></td>
@@ -47,7 +47,7 @@
     </tbody>
 
   <% end %>
-   </table>
+  </table>
    <%= paginate @schedules %>
 
  <%= link_to "予約登録へ", new_admin_schedule_path, class: 'btn btn-primary btn-sm' %>

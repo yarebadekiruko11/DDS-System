@@ -1,9 +1,9 @@
 <div class="row mt-4">
    <%= render 'admin/search' %>
  <div class="col">
-<h6>登録生徒一覧/<%= @students.total_count %>名</h6>
+   <h6>登録生徒一覧/<%= @students.total_count %>名</h6>
 
-<table class="table mt-2" style="font-size: 85%;">
+   <table class="table mt-2" style="font-size: 85%;">
     <thead>
      <tr>
       <th scope="col">生徒名</th>
@@ -28,7 +28,7 @@
      </tr>
       <% end %>
      </tbody>
-    </table>
+   </table>
     <%= paginate @students %>
 
 <%= link_to "Homeへ", admin_homes_top_path %>

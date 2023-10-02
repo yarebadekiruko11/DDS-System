@@ -8,10 +8,8 @@ before_action :authenticate_admin!
     if params[:start_time]
     # 文字列で送られたパラメータをdateクラスに変換
     @start_time = params[:start_time].to_date
-
-    # @courses = Course.where("start_time >= ? AND start_time <= ?", start_time.beginning_of_day, start_time.end_of_day)
     @courses = Course.where(start_time: @start_time.all_day).page(params[:page])
-    # @courses = Course.where(start_time: params[:id])
+
     else
       @graduation_day = params[:graduation_day].to_date
       @courses = Course.where(graduation_day: @graduation_day.all_day).page(params[:page])
@@ -43,7 +41,6 @@ before_action :authenticate_admin!
   end
 
   def update
-    # graduation_at = params[:graduation_at].to_datetime
     @course = Course.find(params[:id])
     if @course.update(course_params)
      redirect_to admin_course_path(@course.id)

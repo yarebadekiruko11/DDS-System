@@ -12,9 +12,6 @@ validates :car_model, presence: true
 validates :status, presence: true
 validates :instructor, presence: true
 
-
-
-
 # enum定義
 # 在籍ステータス
  enum status: { enrolled: 0, graduation: 1, leaving: 2 }
@@ -37,6 +34,5 @@ validates :instructor, presence: true
  def start_time_day
   start_time.strftime('%m/%d')
  end
-
 
 end
