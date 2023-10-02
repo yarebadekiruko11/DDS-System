@@ -16,7 +16,7 @@
 例えば自分の端末で授業の予約を取ったり、オンラインで授業を見たりなどです。
 ただ、生徒の情報を指導員が把握するには大きな手間がかかります。
 
-現在一人の生徒に対し、アドバイザーとして担当指導員が一人つきます。
+私の学校では、現在一人の生徒に対し、アドバイザーとして担当指導員が一人つきます。
 担当は全ての授業を行うわけでなく、進行状況を確認したり、スケジュール調整の相談に応じるといったことが主になります。
 <br>その情報を確認するためには、紙面で保管されている全ての生徒のファイルの中から目的の生徒のファイルを探し出す必要があります。
 （PCのデータにはいつ受講しているか、何回受講したか、などの事務的データのみしかありません）
@@ -27,7 +27,7 @@
 
 もし、指導員個人にタブレット端末などを配布し、使用できるようになったら
 - ファイルを探しに行く手間も時間も削減できる。
-- 自分の担当生徒が一目でわかる。
+- 自分の担当生徒の情報が一目でわかる。
 - 担当生徒に対しての他の指導員のコメントが確認できる。
 - 担当外の生徒の授業を行なった際、コメントする形で担当指導員に情報を共有することができる。
 - 授業前のインターバルの間に、自分が授業を行う生徒の情報の確認ができる。
@@ -54,6 +54,8 @@ https://docs.google.com/spreadsheets/d/1-97nLuBwVKszEu-jq4DHByMKP-on7qrAyaeRjFuc
 https://drive.google.com/file/d/1IU2jSQ-DEmYhQMCBVIOx-3nQh3ZjwQVW/view?usp=sharing
 #### WBS
 https://docs.google.com/spreadsheets/d/1jdS0dOEu6TMgFhmySJIj5eGp6VwEu3LfhncE7gQWjx8/edit?usp=sharing
+#### テスト仕様書
+https://docs.google.com/spreadsheets/d/1a3GJEuOCOlmXN1f9avICOqXzIsTajfXUiML_yacQwls/edit?usp=sharing
 
 ​
 ## 開発環境
