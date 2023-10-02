@@ -23,7 +23,7 @@
     </div>
    <div class="col-6">
      <%= f.hidden_field :student_id, :value => @student.id %>
-     <%= @student.birthday %>
+     <%= @student.birthday_wareki %>
    </div>
    </div>
 
@@ -64,7 +64,7 @@
     <p>入校日</p>
    </div>
    <div class="col-6">
-    <%= f.date_field :start_time %>
+    <%= f.date_field :start_time, value: Time.zone.today.strftime("%Y-%m-%d"), min: Time.zone.today %>
    </div>
   </div>
 

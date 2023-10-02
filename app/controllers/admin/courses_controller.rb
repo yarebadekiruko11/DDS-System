@@ -20,7 +20,8 @@ before_action :authenticate_admin!
 
   def create
     @course = Course.new(course_params)
-    if Course.where(car_model: @course.car_model).exists?
+
+    if Course.where(student_id: @course.student.id, car_model: @course.car_model).exists?
       flash[:notise] = "同じ車種で登録があります。別の車種を選択してください"
 
       @student = @course.student

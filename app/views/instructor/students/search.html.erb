@@ -2,7 +2,7 @@
  <%= render 'instructor/schedule', today_schedules: @today_schedules %>
 
 <div class="col-9 mt-2">
-<h6><%= "#{@keyword}の検索結果" + "#{@course.count}件"%></h6>
+<h6><%= "#{@keyword}の検索結果" + "#{@courses.count}件"%></h6>
    <table class="table text-center" style="font-size: 80%;">
     <thead>
      <tr>
@@ -27,5 +27,4 @@
       <% end %>
     </tbody>
    </table>
-    <%= paginate @courses %>
   </div>

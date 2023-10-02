@@ -20,7 +20,7 @@ class Admin::HomesController < ApplicationController
     @beginning_end_month = @beginning_of_month..@end_of_month
 
     @startcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
-    @endcourses = Course.where(start_time: @beginning_of_month..@end_of_month)
+    @endcourses = Course.where(graduation_day: @beginning_of_month..@end_of_month)
 
   end
 
@@ -37,7 +37,7 @@ class Admin::HomesController < ApplicationController
         @courses.concat(student.courses)
       end
 
-      @courses = Course.page(params[:page])
+      # @courses = Course.page(params[:page])
 
     else
        @instructors = Instructor.search(params[:keyword]).page(params[:page])
