@@ -48,7 +48,7 @@ Student.create!(
     last_name_kana: "アイバ",
     first_name_kana: "マモル",
     birthday: "2005.10.12",
-    address: "A@A",
+    address: "青森県青森市",
     phone: "11-1111"
  },
  {
@@ -57,7 +57,7 @@ Student.create!(
     last_name_kana: "イド",
     first_name_kana: "ススム",
     birthday: "2005.3.22",
-    address: "I@I",
+    address: "岩手県盛岡市",
     phone: "22-2222"
  },
  {
@@ -66,7 +66,7 @@ Student.create!(
     last_name_kana: "ウツノミヤ",
     first_name_kana: "サトシ",
     birthday: "2006.2.4",
-    address: "U@U",
+    address: "茨城県宇都宮市",
     phone: "33-3333"
  },
  {
@@ -75,7 +75,7 @@ Student.create!(
     last_name_kana: "エモリ",
     first_name_kana: "ユイ",
     birthday: "2004.9.23",
-    address: "E@E",
+    address: "愛媛県松山市",
     phone: "44-4444"
  },
  {
@@ -84,7 +84,7 @@ Student.create!(
     last_name_kana: "オガワ",
     first_name_kana: "ルイ",
     birthday: "2003.6.6",
-    address: "O@O",
+    address: "大分県大分市",
     phone: "55-5555"
  }
 ]
