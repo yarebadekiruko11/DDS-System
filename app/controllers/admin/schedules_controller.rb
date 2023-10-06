@@ -81,7 +81,7 @@ end
       return
     end
 
-    if @schedule.save
+    if @schedule.update(schedule_params)
       redirect_to admin_schedule_path(@schedule.id)
     else
       render :edit
@@ -137,11 +137,6 @@ end
 
   def schedule_params
     params.require(:schedule).permit(:course_id, :class_time, :class_day, :instructor_id)
-  end
-
-# 日曜始まり
-  def set_beginning_of_week
-   Date.beginning_of_week = :sunday
   end
 
 end
