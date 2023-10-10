@@ -1,0 +1,66 @@
+<div class="row mt-4">
+
+  <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
+
+ <div class="col">
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>時間割登録</h5>
+    </div>
+  </div>
+
+    <%= form_with url: new_admin_schedule_path, local: true, method: :get do |f| %>
+  <div class="row justify-content-start mt-3">
+     <div class="col-2 ml-4">
+      <p>予約希望日</p>
+     </div>
+     <div class="col">
+         <%= f.date_field :class_day, value: Time.zone.tomorrow.strftime("%Y-%m-%d"), min: Time.zone.tomorrow %>
+        <div class="d-inline-flex">
+         <%= f.submit "表示", class: 'btn btn-secondary mx-2 text-nowrap btn-sm' %>
+        </div>
+     </div>
+    <% end %>
+  </div>
+
+<%= form_with model: @schedule, url: admin_schedules_path, method: :post do |f| %>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-2 ml-4">
+     <p>受講日</p>
+    </div>
+    <div class="col">
+
+    <%= f.date_field :class_day, value: Time.zone.tomorrow.strftime("%Y-%m-%d"), min: Time.zone.tomorrow %>
+
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-2 ml-4">
+     <p>受講時間</p>
+    </div>
+    <div class="col">
+      <%= f.select :class_time, *[1..5] %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-2">指導員</div>
+    <div class="col">
+     <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :id_name) %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <br>
+    <div class="col-2">コース</div>
+    <div class="col">
+     <%= f.select :course_id, options_from_collection_for_select(Course.where(status: 0), :id, :course_name) %>
+    </div>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "新規登録", class: 'btn btn-success' %>
+  </div>
+<% end %>
+<%= link_to "topへ", admin_homes_top_path %>
+ </div>
+</div>

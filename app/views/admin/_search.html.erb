@@ -1,0 +1,49 @@
+  <div class="col-3">
+     <!--指導員関連-->
+    <div class="col-md-auto">
+      <h6>登録指導員数／全<%= Instructor.count %>名</h6>
+    </div>
+    <div class="col-md-auto mt-4 mb-2">
+      <%= link_to "新規指導員登録", new_admin_instructor_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-md-auto mt-2">
+      <%= link_to "指導員一覧", admin_instructors_path, class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+
+    <!--生徒関連-->
+    <div class="col-md-auto mt-5">
+     <h6>登録コース数／全<%= Course.count %>件</h6>
+    </div>
+    <div class="col-md-auto mt-3 mb-2">
+      <%= link_to "新規生徒登録", new_admin_student_path, class: 'btn btn-primary' %>
+    </div>
+
+    <div class="col-md-auto mt-3 mb-2">
+      <%= link_to "受講生コース一覧", admin_courses_path, class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+    <div class="col-md-auto my-2">
+      <%= link_to "生徒一覧", admin_students_path, class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+
+    <div class="col-md-auto mt-5">
+     <h6>絞込表示</h6>
+    </div>
+    <%= form_with url: admin_courses_search_path, local: true, method: :get do |f| %>
+    <div class="d-inline-flex">
+        <%= f.select :car_model, Course.car_models_i18n.invert,{},{ class: "form-select"} %>
+        </div>
+        <div class="d-inline-flex">
+        <%= f.submit "表示", class: 'btn btn-secondary mx-2 text-nowrap btn-sm' %>
+    </div>
+    <% end %>
+
+    <%= form_with url: admin_courses_search_path, local: true, method: :get do |f| %>
+    <div class="d-inline-flex">
+        <%= f.select :status, Course.statuses_i18n.invert,{},{ class: "form-select"} %>
+    </div>
+    <div class="d-inline-flex">
+        <%= f.submit "表示", class: 'btn btn-secondary mx-2 text-nowrap btn-sm' %>
+    </div>
+    <% end %>
+
+  </div>

@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+<h1 class="col-md-auto mt-5">Driving School System</h1>
+</div>
+<div class="row justify-content-center">
+<h5 class="col-md-auto my-4">管理者用ログインページ</h5>
+</div>
+
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
+
+<div class="row justify-content-center my-4 text-center">
+   <div class="col-2">アドレス</div>
+   <div class="col-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+   </div>
+</div>
+
+<div class="row justify-content-center my-4 text-center">
+   <div class="col-2">パスワード</div>
+   <div class="col-3">
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+   </div>
+</div>
+<div class="row justify-content-center my-4">
+  <div class="col-md-auto">
+    <%= f.submit "Log in", class: 'btn btn-primary px-5' %>
+  </div>
+<% end %>
+
+</div>

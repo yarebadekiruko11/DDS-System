@@ -1,0 +1,40 @@
+<div class="row mt-4">
+
+   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
+   <%#= form_with model:  do |f| %>
+   <%#= f.hidden_field :class_day, :value => @class_day %>
+   <%# end %>
+
+ <div class="col">
+  <h6>予約履歴</h6>
+
+  <table class="table" style="font-size: 80%;">
+    <thead>
+     <tr>
+      <th scope="col-2">受講日</th>
+      <th scope="col-1">時限</th>
+      <th scope="col-5">受講生徒/車種</th>
+      <th scope="col-2">担当指導員</th>
+      <th scope="col-2"></th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <% @schedulesall.each do |schedule| %>
+     <tr>
+      <td><%= schedule.class_dayf %></td>
+      <td><%= "#{schedule.class_time}限目" %></td>
+      <td><%= link_to schedule.course.course_name,admin_course_path(schedule.course.id) %></td>
+      <td><%= schedule.instructor.name %></td>
+      <% if schedule.class_day > Time.zone.today %>
+      <td><%= link_to "変更", edit_admin_schedule_path(schedule.id) %> /
+           <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      <% end %>
+     <tr>
+     <% end %>
+    </tbody>
+  </table>
+   <%= paginate @schedulesall %>
+   <%= link_to "トップ画面へ", admin_homes_top_path %>
+  </div>
+ </div>

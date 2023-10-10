@@ -1,0 +1,37 @@
+<div class="row mt-4">
+   <%= render 'admin/search' %>
+ <div class="col">
+   <h6>登録生徒一覧/<%= @students.total_count %>名</h6>
+
+   <table class="table mt-2" style="font-size: 85%;">
+    <thead>
+     <tr>
+      <th scope="col">生徒名</th>
+      <th scope="col">カナ</th>
+      <th scope="col">生年月日</th>
+      <th scope="col">登録車種</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+     <tr>
+       <td><%= student.name %></td>
+       <td><%= student.kana %></td>
+       <td><%= student.birthday.jisx0301 %></td>
+       <td>
+         <% student.courses.each do |course| %>
+          <%= course.car_model_i18n %>
+         <% end %>
+       </td>
+       <td><%= link_to "車種追加", admin_student_path(student.id) %></td>
+       <td><%= link_to "編集", edit_admin_student_path(student.id) %></td>
+     </tr>
+      <% end %>
+     </tbody>
+   </table>
+    <%= paginate @students %>
+
+<%= link_to "Homeへ", admin_homes_top_path %>
+
+ </div>
+</div>

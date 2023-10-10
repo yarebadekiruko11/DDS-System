@@ -1,0 +1,72 @@
+ <div class="col-4">
+   <% if class_day > Time.zone.today %>
+    <%= link_to "#{class_day.strftime('%m/%d')}新規予約", new_admin_schedule_path(params[:class_day]), class: 'btn btn-primary btn-sm' %>
+   <% end %>
+   <br>
+   <h7 class="row d-inline-flex ms-1 mt-2 px-1" style="background-color: lightgray;"><%= class_day.strftime('%m/%d') %>の時間割</h7>
+     <%= form_with do |f| %>
+     <% end %>
+
+<% if class_day > Time.zone.today %>
+
+  <br>
+   <table class="table table-sm mt-2" style="font-size: 75%;">
+    <thead class="sticky-top">
+     <tr>
+      <th scope="col">時限</th>
+      <th scope="col">担当指導員<br>受講生徒/車種</th>
+      <th scope="col"></th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <% schedules.each do |schedule| %>
+     <tr>
+      <td><%= "#{schedule.class_time}限" %></td>
+      <td>
+       <%= schedule.instructor.name %>
+       <br>
+       <%= schedule.course.course_name %>
+      </td>
+      <td>
+       <%= link_to "変更", edit_admin_schedule_path(schedule.id) %>
+       <br>
+       <%= link_to "削除", admin_schedule_path(schedule.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </td>
+     <tr>
+     <% end %>
+    </tbody>
+   </table>
+
+<% else %>
+
+     <br>
+   <table class="table table-sm mt-2" style="font-size: 75%;">
+    <thead class="sticky-top">
+     <tr>
+      <th scope="col">時限</th>
+      <th scope="col">担当指導員<br>受講生徒/車種</th>
+      <th scope="col"></th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <% schedules.each do |schedule| %>
+     <tr>
+      <td><%= "#{schedule.class_time}限" %></td>
+      <td>
+       <%= schedule.instructor.name %>
+       <br>
+       <%= schedule.course.course_name %>
+      </td>
+
+     <tr>
+     <% end %>
+    </tbody>
+   </table>
+
+ <% end %>
+
+
+ </div>
+

@@ -1,0 +1,67 @@
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col ms-2">
+  <h5>指導員詳細</h5>
+   <table class="table">
+     <tbody>
+
+      <tr>
+       <th class="col-3">No</th>
+       <td><%= @instructor.id %></td>
+      </tr>
+      <tr>
+       <th>指導員名</th>
+       <td><%= @instructor.name %></td>
+      </tr>
+      <tr>
+       <th>予約件数</th>
+       <td><%= link_to @instructor.schedules.count, admin_path(@instructor.id) %>件</td>
+      </tr>
+      <tr>
+       <th>メール</th>
+       <td><%= @instructor.email %></td>
+      </tr>
+      <tr>
+       <th>在籍状況</th>
+       <td>
+        <% if @instructor.is_deleted == false %>有効
+        <% else %>無効
+        <% end %>
+       </td>
+      </tr>
+      <tr>
+       <th>担当生徒</th>
+       <td><%= @instructor.courses.count %>件</td>
+      </tr>
+    </tbody>
+   </table>
+   <%= link_to "編集する", edit_admin_instructor_path(@instructor.id), class: "btn btn-success px-5" %>
+   <%= link_to "指導員一覧画面へ", admin_instructors_path %>
+
+
+<div class="col mt-5">
+   <h5>担当生徒詳細</h5>
+</div>
+   <table class="table table-sm" style="font-size: 85%;">
+  <thead>
+    <tr>
+      <th scope="col">生徒名</th>
+      <th scope="col">受講車種</th>
+      <th scope="col">入校日</th>
+      <th scope="col">在籍状況</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instructorcourses.each do |course| %>
+    <tr>
+      <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
+      <td><%= course.car_model_i18n %></td>
+      <td><%= l course.start_time %></td>
+      <td><%= course.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @instructorcourses %>
+ </div>
+</div>
