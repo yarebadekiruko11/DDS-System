@@ -1,0 +1,70 @@
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+ <div class="col">
+
+<% if @instructor.errors.any? %>
+  <%= @instructor.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @instructor.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+  <div class="row">
+    <div class="col-auto mt-5 mb-2" style="background-color: darkgray;">
+     <h5>新規指導員登録</h5>
+    </div>
+  </div>
+
+<%= form_with model: @instructor, url: admin_instructors_path, method: :post do |f| %>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-4 ml-4">
+     <p>新規指導員名</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-4 ml-4">
+     <p>メールアドレス</p>
+    </div>
+    <div class="col-6">
+    <%= f.text_field :email %>
+    </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-4 ml-4">
+    <p>パスワード
+      <% if @minimum_password_length %>
+      (<%= @minimum_password_length %> characters minimum)
+      <% end %>
+    </p>
+   </div>
+   <div class="col-6">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-4 ml-4">
+    パスワード確認用
+   </div>
+   <div class="col-6">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-4">
+   <div class="col-4 ml-4"></div>
+   <div class="d-grid gap-1 col-6">
+    <%= f.submit "新規登録", class: 'btn btn-success' %>
+   </div>
+  </div>
+<% end %>
+ </div>
+</div>

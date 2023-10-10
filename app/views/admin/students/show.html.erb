@@ -1,0 +1,82 @@
+<div class="row mt-4">
+  <%= render 'admin/search' %>
+  <div class="col">
+
+  <div class="row">
+    <div class="col-auto mt-5" style="background-color: darkgray;">
+     <h5>コース新規登録</h5>
+    </div>
+  </div>
+
+<%= form_with model: @course, url: admin_courses_path, method: :post do |f| %>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生徒名</p>
+    </div>
+   <div class="col-6"><%= @student.name %></div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生年月日</p>
+    </div>
+   <div class="col-6">
+     <%= f.hidden_field :student_id, :value => @student.id %>
+     <%= @student.birthday_wareki %>
+   </div>
+   </div>
+
+  <div class="row justify-content-start mt-3">
+    <div class="col-3 ml-4">
+     <p>住所</p>
+    </div>
+    <div class="col-6"><%= @student.address %></div>
+   </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>電話番号</p>
+    </div>
+   <div class="col-6"><%= @student.phone %></div>
+   </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>受講車種</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :car_model, Course.car_models_i18n.invert %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>担当指導員</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.all.where(is_deleted: false), :id, :id_name) %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>入校日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_field :start_time, value: Time.zone.today.strftime("%Y-%m-%d"), min: Time.zone.today %>
+   </div>
+  </div>
+
+   <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <%= link_to "生徒編集へ", edit_admin_student_path(@student.id) %>
+   </div>
+   <div class="d-grid gap-2 col-6">
+    <%= f.submit "登録", class: 'btn btn-success px-5' %>
+   </div>
+  </div>
+
+ <% end %>
+  </div>
+ </div>

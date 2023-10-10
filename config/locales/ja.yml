@@ -1,0 +1,26 @@
+ja:
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+
+  enums:
+    course:
+      status:
+        enrolled: "在籍"
+        graduation: "卒業"
+        leaving: "退校"
+      car_model:
+        standard: "普通車"
+        bike: "二輪"
+        other: "その他"
+
+  time:
+    formats:
+      default: "%m/%d"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

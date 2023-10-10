@@ -1,0 +1,94 @@
+<div class="row mt-4">
+    <%= render 'admin/search' %>
+ <div class="col">
+  <h6 class="d-inline-flex justify-content-end bg-primary p-1 text-dark bg-opacity-25">コース編集</h6>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>生徒名</p>
+    </div>
+   <div class="col-6"><%= @course.student.name %></div>
+  </div>
+
+  <div class="row justify-content-start mt-1">
+   <div class="col-3 ml-4">
+    <p>生年月日</p>
+    </div>
+   <div class="col-6">
+     <%= @course.student.birthday %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-1">
+    <div class="col-3 ml-4">
+     <p>住所</p>
+    </div>
+    <div class="col-6"><%= @course.student.address %></div>
+  </div>
+
+  <div class="row justify-content-start mt-1">
+   <div class="col-3 ml-4">
+    <p>電話番号</p>
+   </div>
+   <div class="col-6"><%= @course.student.phone %></div>
+  </div>
+
+<%= form_with model: @course, url: admin_course_path do |f| %>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4">
+    <p>受講車種</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :car_model, Course.car_models_i18n.invert %>
+    <%#= f.select :car_model, Course.car_models.keys.map { |k| [t("enums.course.car_model.#{k}"), k] } %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-2">
+   <div class="col-3 ml-4">
+    <p>担当指導員</p>
+   </div>
+   <div class="col-6">
+    <%= f.select :instructor_id, options_from_collection_for_select(Instructor.where(is_deleted: false), :id, :id_name, @course.instructor_id ) %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-2">
+   <div class="col-3 ml-4">
+    <p>入校日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_field :start_time %>
+   </div>
+  </div>
+  <div class="row justify-content-start mt-2">
+   <div class="col-3 ml-4">
+    <p>卒業日</p>
+   </div>
+   <div class="col-6">
+    <%= f.date_field :graduation_day, include_blank: true %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-2">
+   <div class="col-3 ml-4">
+    <p>ステータス</p>
+   </div>
+   <div class="col-6">
+    <%#= f.select :status, options_for_select(Course.statuses.keys.map { |k| [t("enums.course.status.#{k}"), k] }) %>
+    <%= f.select :status, Course.statuses_i18n.invert %>
+   </div>
+  </div>
+
+  <div class="row justify-content-start mt-3">
+   <div class="col-3 ml-4"></div>
+   <div class="d-grid gap-2 col-6">
+    <%= f.submit "保存", class: 'btn btn-success px-5' %>
+   </div>
+  </div>
+
+<% end %>
+ </div>
+</div>
+
