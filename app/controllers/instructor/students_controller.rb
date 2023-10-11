@@ -5,7 +5,7 @@ class Instructor::StudentsController < ApplicationController
     @schedules = @instructor.schedules
     @today_schedules = @schedules.where("class_day = ?", Time.zone.today).order(class_time: "ASC")
     # 入力情報
-    @students = Student.search(params[:keyword]).order(class_time: "DESC")
+    @students = Student.search(params[:keyword])
     @keyword = params[:keyword]
     @courses = []
     @students.each do |student|
