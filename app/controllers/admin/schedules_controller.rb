@@ -23,8 +23,8 @@ class Admin::SchedulesController < ApplicationController
 
 if schedule.class_day.present?
 
-    if schedule.class_day <= Time.zone.today
-      flash[:notise] = "明日以降の日付を選択してください"
+    if schedule.class_day < Time.zone.today
+      flash[:notise] = "今日以降の日付を選択してください"
       redirect_to new_admin_schedule_path(schedule.class_day)
       return
     end
