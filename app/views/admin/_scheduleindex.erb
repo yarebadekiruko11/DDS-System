@@ -7,8 +7,9 @@
      <%= form_with do |f| %>
      <% end %>
 
-<% if class_day > Time.zone.today %>
+<% if Schedule.exists? %>
 
+   <% if class_day > Time.zone.today %>
   <br>
    <table class="table table-sm mt-2" style="font-size: 75%;">
     <thead class="sticky-top">
@@ -65,7 +66,10 @@
     </tbody>
    </table>
 
- <% end %>
+  <% end %>
+<% else %>
+ <p>今日の予定はありません</p>
+<% end %>
 
 
  </div>

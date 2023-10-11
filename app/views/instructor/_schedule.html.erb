@@ -1,6 +1,8 @@
  <div class="col-3 mt-2">
    <h6 class="d-inline-flex justify-content-start bg-primary p-1 text-dark bg-opacity-25">
      <%= "#{ Time.zone.today.strftime('%m/%d')}の予定" %></h6>
+
+<% if Schedule.exists? %>
    <table class="table" style="font-size: 75%;">
     <thead>
      <tr>
@@ -19,4 +21,7 @@
        <% end %>
     </tbody>
    </table>
+   <% else %>
+   <p>本日の予約はありません</p>
+   <% end %>
  </div>
