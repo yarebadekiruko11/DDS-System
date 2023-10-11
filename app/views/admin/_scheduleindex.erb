@@ -50,8 +50,8 @@
       <th scope="col"></th>
      </tr>
     </thead>
-    <tbody>
 
+    <tbody>
      <% schedules.each do |schedule| %>
      <tr>
       <td><%= "#{schedule.class_time}限" %></td>
@@ -60,7 +60,6 @@
        <br>
        <%= schedule.course.course_name %>
       </td>
-
      <tr>
      <% end %>
     </tbody>
