@@ -3,7 +3,7 @@ class Instructor::CoursesController < ApplicationController
     # 共通レイアウト用
     @instructor = current_instructor
     @schedules = @instructor.schedules
-    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+    @today_schedules = @schedules.where("class_day = ?", Time.zone.today).order(class_time: "ASC")
 
     # コース詳細
     @course = Course.find(params[:id])
@@ -19,7 +19,7 @@ class Instructor::CoursesController < ApplicationController
 
     # 共通レイアウトスケジュール用
     @schedules = current_instructor.schedules
-    @today_schedules = @schedules.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+    @today_schedules = @schedules.where("class_day = ?", Time.zone.today).order(class_time: "ASC")
 
   end
 

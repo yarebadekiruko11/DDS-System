@@ -13,7 +13,7 @@ class Admin::SchedulesController < ApplicationController
      @schedule = Schedule.new
     else
      @class_day = Time.zone.today
-     @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+     @schedules = Schedule.where("class_day = ?", Time.zone.today).order(class_time: "ASC")
      @schedule = Schedule.new
     end
   end
@@ -90,7 +90,7 @@ end
 
   def index
     @class_day = Time.zone.today
-    @schedules = Schedule.where("class_day == ?", Time.zone.today).order(class_time: "ASC")
+    @schedules = Schedule.where("class_day = ?", Time.zone.today).order(class_time: "ASC")
     @schedulesall = Schedule.all.order(class_day: "DESC", class_time: "DESC").page(params[:page])
   end
 
