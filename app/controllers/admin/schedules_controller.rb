@@ -42,6 +42,7 @@ if schedule.class_day.present?
     if schedule.save
       redirect_to admin_schedule_path(schedule.id)
     else
+      @class_day = Time.zone.today
       render new_admin_schedule_path
     end
 
