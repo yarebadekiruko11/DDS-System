@@ -14,7 +14,6 @@
      </tr>
     </thead>
     <tbody>
-
      <% @schedules.each do |schedule| %>
      <tr>
       <td><%= schedule.class_dayf %></td>
@@ -23,8 +22,11 @@
      <tr>
      <% end %>
     </tbody>
-   </table>
+  </table>
+
  </div>
+
+
  <div class="col-9 mt-2">
 
   <h7 class="d-inline-flex justify-content-start bg-success p-1 text-dark bg-opacity-50">受講者情報</h7>
@@ -70,7 +72,7 @@
         '2段階-1','2-2','2-3','2-4','2-5','2-6','2-7','2-8','2-9','2-10','2-11以降']), {include_blank: '選択してください'} %>
   <div class="row my-2 align-items-center">
    <div class="col-10">
-    <!--<input class="form-control form-control-sm" type="text" placeholder="コメントをここに" aria-label=".form-control-sm example">-->
+
     <%= f.text_area :comment_body, placeholder: "コメントをここに", class: "form-control form-control-sm" %>
    </div>
    <div class="col-2">
@@ -102,6 +104,8 @@
     </tbody>
  <% end %>
   </table>
+
+
    <%= paginate @comments %>
 
  </div>

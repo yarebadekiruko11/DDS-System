@@ -1,27 +1,26 @@
 <div class="row mt-4">
-
   <%= render 'admin/scheduleindex', schedules: @schedules, class_day: @class_day %>
 
-<div class="col">
+  <div class="col">
    <h4>今月入校数<%= @startcourses.count %>件,卒業数<%= @endcourses.count %></h4>
 
    <%= month_calendar events: @courses do |date, courses| %>
      <%= date.day %>
      <br>
      <% if @allschedules.where(class_day: date).count > 0 %>
-     <%= link_to "時間割", admin_schedules_dayplan_path(class_day: date) %>
-    <% end %>
-   <br>
-    <% if courses.count > 0 %>
-     入校:<%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
-    <% end %>
-    <br>
-    <%# pp date, @courses.where(graduation_day: date).count %>
-    <% if @courses.where(graduation_day: date).count > 0%>
-    卒業:<%= link_to @courses.where(graduation_day: date).count, admin_courses_day_index_path(graduation_day: date) %>件
-    <% end %>
+      <%= link_to "時間割", admin_schedules_dayplan_path(class_day: date) %>
+     <% end %>
+     <br>
+     <% if courses.count > 0 %>
+       入校:<%= link_to courses.count, admin_courses_day_index_path(start_time: date) %>件
+     <% end %>
+     <br>
+
+     <% if @courses.where(graduation_day: date).count > 0%>
+       卒業:<%= link_to @courses.where(graduation_day: date).count, admin_courses_day_index_path(graduation_day: date) %>件
+     <% end %>
    <% end %>
-   <%= link_to "予約一覧", admin_schedules_path, class:"btn btn-secondary btn-sm" %>
-</div>
+
+  </div>
 
 </div>

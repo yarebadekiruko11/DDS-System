@@ -7,8 +7,8 @@ before_action :authenticate_admin!
   def day_index
     if params[:start_time]
     # 文字列で送られたパラメータをdateクラスに変換
-    @start_time = params[:start_time].to_date
-    @courses = Course.where(start_time: @start_time.all_day).page(params[:page])
+      @start_time = params[:start_time].to_date
+      @courses = Course.where(start_time: @start_time.all_day).page(params[:page])
 
     else
       @graduation_day = params[:graduation_day].to_date
@@ -21,7 +21,6 @@ before_action :authenticate_admin!
 
     if Course.where(student_id: @course.student.id, car_model: @course.car_model).exists?
       flash[:notise] = "同じ車種で登録があります。別の車種を選択してください"
-
       @student = @course.student
       redirect_to admin_student_path(@student.id)
       return
@@ -90,8 +89,4 @@ before_action :authenticate_admin!
   def course_params
     params.require(:course).permit(:student_id, :start_time, :car_model, :status, :graduation_day, :instructor_id)
   end
-
-
-
-
 end
