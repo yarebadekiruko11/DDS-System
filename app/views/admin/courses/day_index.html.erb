@@ -1,58 +1,58 @@
 <div class="row mt-4">
-  <%= render 'admin/search' %>
- <div class="col">
-  <% if params[:start_time] %>
-  <h5><%= l @start_time %>の受講開始件数 <%= @courses.count %>件</h5>
-   <table class="table">
-    <thead>
-     <tr>
-      <th scope="col">生徒名</th>
-      <th scope="col">受講車種</th>
-      <th scope="col">担当指導員</th>
-      <th scope="col">在職状況</th>
-      <th scope="col">入校日</th>
-     </tr>
-    </thead>
-    <tbody>
-      <% @courses.each do |course| %>
-      <tr>
-       <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
-       <td><%= course.car_model_i18n %></td>
-       <td><%= course.instructor.name %></td>
-       <td><%= course.status_i18n %></td>
-       <td><%= l course.start_time %></td>
-      </tr>
-      <% end %>
-    </tbody>
-   </table>
-   <%= paginate @courses %>
+    <%= render 'admin/search' %>
+  <div class="col">
+      <% if params[:start_time] %>
+    <h5><%= l @start_time %>の受講開始件数 <%= @courses.count %>件</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">生徒名</th>
+          <th scope="col">受講車種</th>
+          <th scope="col">担当指導員</th>
+          <th scope="col">在職状況</th>
+          <th scope="col">入校日</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
+          <td><%= course.car_model_i18n %></td>
+          <td><%= course.instructor.name %></td>
+          <td><%= course.status_i18n %></td>
+          <td><%= l course.start_time %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+        <%= paginate @courses %>
 
-   <% else %>
+      <% else %>
     <h3><%= l @graduation_day %>の卒業件数 <%= @courses.count %>件</h3>
-   <table class="table">
-    <thead>
-     <tr>
-      <th scope="col">生徒名</th>
-      <th scope="col">受講車種</th>
-      <th scope="col">担当指導員</th>
-      <th scope="col">在職状況</th>
-      <th scope="col">卒業日</th>
-     </tr>
-    </thead>
-    <tbody>
-      <% @courses.each do |course| %>
-      <tr>
-       <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
-       <td><%= course.car_model_i18n %></td>
-       <td><%= course.instructor.name %></td>
-       <td><%= course.status_i18n %></td>
-       <td><%= l course.graduation_day %></td>
-      </tr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">生徒名</th>
+          <th scope="col">受講車種</th>
+          <th scope="col">担当指導員</th>
+          <th scope="col">在職状況</th>
+          <th scope="col">卒業日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.student.name, admin_course_path(course.id) %></td>
+          <td><%= course.car_model_i18n %></td>
+          <td><%= course.instructor.name %></td>
+          <td><%= course.status_i18n %></td>
+          <td><%= l course.graduation_day %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+        <%= paginate @courses %>
       <% end %>
-    </tbody>
-   </table>
-   <%= paginate @courses %>
-<% end %>
-<%= link_to "Homeへ", admin_homes_top_path %>
- </div>
+      <%= link_to "Homeへ", admin_homes_top_path %>
+  </div>
 </div>
