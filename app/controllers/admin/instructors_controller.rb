@@ -23,27 +23,21 @@ class Admin::InstructorsController < ApplicationController
   def show
     @instructor = Instructor.find(params[:id])
     @schedules = @instructor.schedules.page(params[:page]).per(8).order(class_day: "DESC")
-
     @instructorcourses = @instructor.courses.page(params[:page]).per(4).order(start_time: "DESC")
-
   end
 
   def edit
     @instructor = Instructor.find(params[:id])
-
   end
 
   def update
-
     instructor = Instructor.find(params[:id])
-
     if instructor.update(instructor_params)
      redirect_to admin_instructor_path(instructor.id)
     else
       flash.now[:notice] = "入力してください"
       render :edit
     end
-
   end
 
   private
@@ -51,6 +45,5 @@ class Admin::InstructorsController < ApplicationController
   def instructor_params
     params.require(:instructor).permit(:name, :password, :password_confirmation, :email, :is_deleted)
   end
-
 
 end
