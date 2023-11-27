@@ -4,7 +4,6 @@
   <h6 class="d-inline-flex justify-content-start bg-primary p-1 text-dark bg-opacity-25">
     <%= @course.course_name %>の</h6>
   <h6 class="d-inline-flex justify-content-end bg-primary p-1 text-dark bg-opacity-25">予約一覧</h6>
-
   <table class="table" style="font-size: 75%;">
     <thead>
      <tr>
@@ -23,12 +22,9 @@
      <% end %>
     </tbody>
   </table>
-
  </div>
 
-
  <div class="col-9 mt-2">
-
   <h7 class="d-inline-flex justify-content-start bg-success p-1 text-dark bg-opacity-50">受講者情報</h7>
   <table class="table">
    <tbody>
@@ -61,14 +57,13 @@
        </td>
       <th>予定一覧</th>
        <td><%= link_to "予約一覧",course_schedules_path(@course.id) %></td>
-
      </tr>
     </tbody>
   </table>
 
- <%= form_with model: [@course, @comment] do |f| %>
-   <%= f.label :"段階選択" %>
-   <%= f.select :howmany, options_for_select(['1段階-1','1-2','1-3','1-4','1-5','1-6','1-7','1-8','1-9','1-10','1-11以降',
+  <%= form_with model: [@course, @comment] do |f| %>
+    <%= f.label :"段階選択" %>
+    <%= f.select :howmany, options_for_select(['1段階-1','1-2','1-3','1-4','1-5','1-6','1-7','1-8','1-9','1-10','1-11以降',
         '2段階-1','2-2','2-3','2-4','2-5','2-6','2-7','2-8','2-9','2-10','2-11以降']), {include_blank: '選択してください'} %>
   <div class="row my-2 align-items-center">
    <div class="col-10">
@@ -85,7 +80,6 @@
    新着順コメント(<%= @course.comments.count %>件)
   </h7>
    <%= link_to "全件表示", course_comments_path(@course.id), class:"btn btn-outline-info btn-sm" %>
-
   <table class="table" style="font-size: 75%;">
     <thead>
      <tr>
@@ -104,9 +98,6 @@
     </tbody>
  <% end %>
   </table>
-
-
    <%= paginate @comments %>
-
  </div>
 </div>
