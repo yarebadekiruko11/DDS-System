@@ -55,7 +55,7 @@
     </tr>
     <tr>
      <th>入校日</th>
-     <td><%= l @course.start_time %></td>
+     <td><%= @course.start_time_day %></td>
     </tr>
     <tr>
      <th>受講車種</th>
@@ -93,6 +93,6 @@
       <%= link_to "コース追加", admin_student_path(@course.student.id), class: "btn btn-outline-info btn-sm" %>
     </div>
   </div>
-  
+
  </div>
 </div>

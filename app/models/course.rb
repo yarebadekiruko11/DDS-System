@@ -32,7 +32,7 @@ validates :instructor, presence: true
  end
 
  def start_time_day
-  start_time.strftime('%m/%d')
+  start_time.strftime('%y/%m/%d')
  end
 
 end

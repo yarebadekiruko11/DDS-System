@@ -37,6 +37,8 @@
     </div>
     <% end %>
 
+    <br>
+
     <%= form_with url: admin_courses_search_path, local: true, method: :get do |f| %>
     <div class="d-inline-flex">
         <%= f.select :status, Course.statuses_i18n.invert,{},{ class: "form-select"} %>
